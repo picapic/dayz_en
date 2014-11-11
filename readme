@@ -24,9 +24,9 @@ If you filled database with full data (#1 or #2), start to play!
 
 
 
-Filling:
+Database filling:
 
--use next commands for filling (from  the game):
+-use next commands for database filling (from  the game):
 /addspawn - add player spawn place in the place you are standing
 /addcar - add car spawn place in the place you are standing
 /adddot [type1, type2, type3 ...] - add object spawn place (see type id in 'thing_type' table in database) in the place you are standing
