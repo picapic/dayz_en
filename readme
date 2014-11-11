@@ -97,7 +97,7 @@ About engine:
 -position tracking system by which an item would not be behind the blank wall, or under the ground
 -realistic positioning (gradient using)
 -registration/authorisation system
--bullets, polyer and vehicle state anticheat
+-bullets, player and vehicle state anticheat
 -weapon anticheat
 -speed anticheat
 
