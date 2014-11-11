@@ -1,0 +1,5103 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet href="file:///C|/Games/GTA/DayZ/pawno/xml/pawndoc.xsl" type="text/xsl"?>
+<doc source="C:\Games\GTA\DayZ\pawno\load_objects.inc">
+	<assembly>
+		<name>load_objects.inc</name>
+	</assembly>
+
+	<!-- general -->
+	<general>
+		MySQL plugin R37 
+	</general>
+
+	<members>
+
+		<!-- enumerations -->
+
+		<!-- constants -->
+		<member name="C:cellmax" value="2147483647">
+			<referrer name="operator!(Float:)"/>
+		</member>
+		<member name="C:cellmin" value="-2147483648">
+			<referrer name="operator-(Float:)"/>
+		</member>
+		<member name="C:false" value="0">
+			<tagname value="bool"/>
+			<referrer name="mysql_store_result"/>
+			<referrer name="mysql_retrieve_row"/>
+			<referrer name="update_vehicle_state"/>
+			<referrer name="player_login"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="save_vehicle_state"/>
+		</member>
+		<member name="C:true" value="1">
+			<tagname value="bool"/>
+			<referrer name="mysql_retrieve_row"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="save_vehicle_state"/>
+			<referrer name="get_character_value"/>
+			<referrer name="get_vehicle_value"/>
+		</member>
+
+		<!-- variables -->
+		<member name="F:RetrieveRow">
+			<tagname value="bool"/>
+			<referrer name="mysql_store_result"/>
+			<referrer name="mysql_retrieve_row"/>
+		</member>
+		<member name="F:RowIndex">
+			<referrer name="mysql_store_result"/>
+			<referrer name="mysql_retrieve_row"/>
+			<referrer name="mysql_data_seek"/>
+			<referrer name="mysql_fetch_field_row"/>
+			<referrer name="mysql_fetch_row_format"/>
+		</member>
+		<member name="F:Streamer_IncludeFileVersion">
+			<attribute name="public"/>
+		</member>
+		<member name="F:gAllLangs">
+		</member>
+		<member name="F:gHealth">
+			<referrer name="update_character_state"/>
+			<referrer name="update_live_sensors"/>
+			<referrer name="create_sensors"/>
+			<referrer name="create_statistic_data"/>
+			<referrer name="update_statistic_data"/>
+			<referrer name="save_state_and_position"/>
+		</member>
+		<member name="F:gHideMapZone">
+			<referrer name="create_smokescreen"/>
+			<referrer name="show_smoke_map"/>
+			<referrer name="hide_smoke_map"/>
+			<referrer name="destroy_smokescreen"/>
+		</member>
+		<member name="F:gHunger">
+			<referrer name="update_live_sensors"/>
+			<referrer name="create_sensors"/>
+			<referrer name="save_state_and_position"/>
+		</member>
+		<member name="F:gIndex">
+		</member>
+		<member name="F:gIndexObject">
+		</member>
+		<member name="F:gIndexVehicle">
+		</member>
+		<member name="F:gInv">
+			<referrer name="set_character_inventory_cell"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="take_vehicle_inventory_cell"/>
+			<referrer name="give_vehicle_inventory_cell"/>
+			<referrer name="move_character_inventory_cell"/>
+			<referrer name="get_inventory_properties_cell"/>
+			<referrer name="get_inventory_properties"/>
+			<referrer name="disassemble_cell_object"/>
+			<referrer name="clear_all_owners"/>
+		</member>
+		<member name="F:gInvThing">
+			<referrer name="set_character_inventory_cell"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="take_vehicle_inventory_cell"/>
+			<referrer name="give_vehicle_inventory_cell"/>
+			<referrer name="move_character_inventory_cell"/>
+			<referrer name="get_inventory_properties_cell"/>
+			<referrer name="get_inventory_properties"/>
+			<referrer name="create_composite_object"/>
+			<referrer name="clear_all_owners"/>
+		</member>
+		<member name="F:gInventoryMenuShow">
+		</member>
+		<member name="F:gKiller">
+			<referrer name="set_character_c_killer"/>
+			<referrer name="set_character_killer"/>
+			<referrer name="save_state_and_position"/>
+		</member>
+		<member name="F:gLangsNumber">
+		</member>
+		<member name="F:gMysql">
+			<referrer name="open_database"/>
+			<referrer name="close_database"/>
+			<referrer name="player_login"/>
+			<referrer name="create_player"/>
+			<referrer name="set_player_id"/>
+			<referrer name="update_player"/>
+			<referrer name="initialize_players"/>
+			<referrer name="load_objects"/>
+			<referrer name="set_new_objects_on_places"/>
+			<referrer name="destroy_objects"/>
+			<referrer name="set_objects_cells"/>
+			<referrer name="is_any_object_in_range"/>
+			<referrer name="set_character_inventory_cell"/>
+			<referrer name="set_vehicle_inventory_cell"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="take_vehicle_inventory_cell"/>
+			<referrer name="give_vehicle_inventory_cell"/>
+			<referrer name="move_character_inventory_cell"/>
+			<referrer name="move_vehicle_inventory_cell"/>
+			<referrer name="get_inventory_properties_cell"/>
+			<referrer name="get_vehicle_properties_cell"/>
+			<referrer name="get_objects_properties"/>
+			<referrer name="get_vehicle_objects_properties"/>
+			<referrer name="get_inventory_properties"/>
+			<referrer name="get_object_data"/>
+			<referrer name="give_character_weapon"/>
+			<referrer name="save_character_ammo"/>
+			<referrer name="save_vehicle_state"/>
+			<referrer name="save_vehicle_position"/>
+			<referrer name="create_new_vehicle"/>
+			<referrer name="create_old_vehicle"/>
+			<referrer name="drop_vehicle_from_dot"/>
+			<referrer name="set_object_owner"/>
+			<referrer name="get_unused_object"/>
+			<referrer name="create_resident_object"/>
+			<referrer name="disassemble_resident_object"/>
+			<referrer name="disassemble_cell_object"/>
+			<referrer name="disassemble_inventory_object"/>
+			<referrer name="clear_all_owners"/>
+			<referrer name="full_free_object_from_owner"/>
+			<referrer name="put_object_on_free_place"/>
+			<referrer name="get_character_value"/>
+			<referrer name="get_vehicle_value"/>
+			<referrer name="get_thing_field"/>
+			<referrer name="set_character_cell_value"/>
+			<referrer name="get_character_state"/>
+			<referrer name="set_character_state"/>
+			<referrer name="set_character_health"/>
+			<referrer name="set_character_hunger"/>
+			<referrer name="set_character_thirst"/>
+			<referrer name="set_character_wound"/>
+			<referrer name="set_character_scores"/>
+			<referrer name="get_character_killer_name"/>
+			<referrer name="set_character_c_killer"/>
+			<referrer name="set_character_killer"/>
+			<referrer name="upscore_character"/>
+			<referrer name="save_player_position"/>
+			<referrer name="load_player_position"/>
+			<referrer name="save_state_and_position"/>
+			<referrer name="load_player_inventory"/>
+			<referrer name="load_vehicle_inventory"/>
+			<referrer name="update_player_position"/>
+			<referrer name="add_spawn_place"/>
+			<referrer name="add_dot_place"/>
+			<referrer name="upd_dot_place"/>
+			<referrer name="add_objects_to_gm"/>
+			<referrer name="add_car_place"/>
+			<referrer name="go_to_thing_place"/>
+			<referrer name="get_spawn_place"/>
+		</member>
+		<member name="F:gNonCheaters">
+			<tagname value="Float"/>
+			<referrer name="cheater_finder"/>
+			<referrer name="load_player_position"/>
+		</member>
+		<member name="F:gObj">
+			<referrer name="set_objects_cells"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="get_objects_properties"/>
+		</member>
+		<member name="F:gObjThing">
+			<referrer name="set_objects_cells"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="get_objects_properties"/>
+			<referrer name="get_object_data"/>
+		</member>
+		<member name="F:gObjectsMenuShow">
+			<referrer name="get_object_data"/>
+		</member>
+		<member name="F:gPlayerLang">
+		</member>
+		<member name="F:gPlayerPasswordCheckCount">
+		</member>
+		<member name="F:gPlayerPasswordRequest">
+		</member>
+		<member name="F:gPlayerWeapon">
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="give_vehicle_inventory_cell"/>
+			<referrer name="give_character_weapon"/>
+			<referrer name="save_character_ammo"/>
+			<referrer name="create_composite_object"/>
+			<referrer name="disassemble_cell_object"/>
+		</member>
+		<member name="F:gPlayersID">
+			<referrer name="cheater_finder"/>
+			<referrer name="create_player"/>
+			<referrer name="set_player_id"/>
+			<referrer name="initialize_players"/>
+			<referrer name="free_players"/>
+			<referrer name="set_character_inventory_cell"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="take_vehicle_inventory_cell"/>
+			<referrer name="give_vehicle_inventory_cell"/>
+			<referrer name="move_character_inventory_cell"/>
+			<referrer name="get_inventory_properties_cell"/>
+			<referrer name="get_inventory_properties"/>
+			<referrer name="get_object_data"/>
+			<referrer name="give_character_weapon"/>
+			<referrer name="save_vehicle_state"/>
+			<referrer name="drop_vehicle_from_dot"/>
+			<referrer name="disassemble_cell_object"/>
+			<referrer name="disassemble_inventory_object"/>
+			<referrer name="clear_all_owners"/>
+			<referrer name="get_character_value"/>
+			<referrer name="set_character_cell_value"/>
+			<referrer name="get_character_state"/>
+			<referrer name="set_character_state"/>
+			<referrer name="set_character_health"/>
+			<referrer name="set_character_hunger"/>
+			<referrer name="set_character_thirst"/>
+			<referrer name="set_character_wound"/>
+			<referrer name="set_character_scores"/>
+			<referrer name="get_character_killer_name"/>
+			<referrer name="set_character_c_killer"/>
+			<referrer name="set_character_killer"/>
+			<referrer name="upscore_character"/>
+			<referrer name="save_player_position"/>
+			<referrer name="load_player_position"/>
+			<referrer name="save_state_and_position"/>
+			<referrer name="load_player_inventory"/>
+			<referrer name="update_player_position"/>
+			<referrer name="get_spawn_place"/>
+		</member>
+		<member name="F:gRotate">
+			<referrer name="create_composite_object"/>
+		</member>
+		<member name="F:gRotateObject">
+		</member>
+		<member name="F:gRotateVehicle">
+		</member>
+		<member name="F:gScores">
+			<referrer name="create_sensors"/>
+			<referrer name="create_statistic_data"/>
+			<referrer name="update_statistic_data"/>
+			<referrer name="upscore_character"/>
+		</member>
+		<member name="F:gStatisticData">
+			<tagname value="PlayerText"/>
+			<referrer name="create_statistic_data"/>
+			<referrer name="show_statistic_data"/>
+			<referrer name="hide_statistic_data"/>
+			<referrer name="update_statistic_data"/>
+			<referrer name="destroy_statistic_data"/>
+		</member>
+		<member name="F:gTdDataVehicle">
+			<tagname value="PlayerText"/>
+			<referrer name="create_vehicle_sensors"/>
+			<referrer name="destroy_vehicle_sensors"/>
+			<referrer name="update_vehicle_sensors"/>
+		</member>
+		<member name="F:gTdInventory">
+			<tagname value="PlayerText"/>
+		</member>
+		<member name="F:gTdMenu">
+			<tagname value="PlayerText"/>
+		</member>
+		<member name="F:gTdObject">
+			<tagname value="PlayerText"/>
+		</member>
+		<member name="F:gTdVehicle">
+			<tagname value="PlayerText"/>
+		</member>
+		<member name="F:gThirst">
+			<referrer name="update_live_sensors"/>
+			<referrer name="create_sensors"/>
+			<referrer name="save_state_and_position"/>
+		</member>
+		<member name="F:gTimerNonCheaters">
+		</member>
+		<member name="F:gTimerid">
+		</member>
+		<member name="F:gTimeridSaveSensors">
+		</member>
+		<member name="F:gTimeridUpdateSensors">
+		</member>
+		<member name="F:gTimeridUpdateVehicles">
+		</member>
+		<member name="F:gUnoccupiedUpdateTimer">
+		</member>
+		<member name="F:gUnoccupiedVehData">
+		</member>
+		<member name="F:gUpdateWeaponTimer">
+		</member>
+		<member name="F:gVeh">
+			<referrer name="update_vehicle_state"/>
+			<referrer name="create_vehicle_sensors"/>
+			<referrer name="update_vehicle_sensors"/>
+			<referrer name="destroy_objects"/>
+			<referrer name="set_vehicle_inventory_cell"/>
+			<referrer name="take_vehicle_inventory_cell"/>
+			<referrer name="give_vehicle_inventory_cell"/>
+			<referrer name="move_vehicle_inventory_cell"/>
+			<referrer name="get_vehicle_properties_cell"/>
+			<referrer name="get_object_data"/>
+			<referrer name="save_vehicle_state"/>
+			<referrer name="save_vehicle_position"/>
+			<referrer name="create_new_vehicle"/>
+			<referrer name="create_old_vehicle"/>
+			<referrer name="drop_vehicle_from_dot"/>
+			<referrer name="put_object_on_free_place"/>
+			<referrer name="get_vehicle_value"/>
+			<referrer name="load_vehicle_inventory"/>
+		</member>
+		<member name="F:gVehMod">
+			<referrer name="set_vehicle_cells"/>
+			<referrer name="set_vehicle_inventory_cell"/>
+			<referrer name="take_vehicle_inventory_cell"/>
+			<referrer name="give_vehicle_inventory_cell"/>
+			<referrer name="move_vehicle_inventory_cell"/>
+			<referrer name="get_vehicle_properties_cell"/>
+			<referrer name="create_new_vehicle"/>
+			<referrer name="create_old_vehicle"/>
+		</member>
+		<member name="F:gVehObj">
+			<referrer name="set_vehicle_cells"/>
+			<referrer name="set_vehicle_inventory_cell"/>
+			<referrer name="take_vehicle_inventory_cell"/>
+			<referrer name="give_vehicle_inventory_cell"/>
+			<referrer name="move_vehicle_inventory_cell"/>
+			<referrer name="get_vehicle_properties_cell"/>
+			<referrer name="get_vehicle_objects_properties"/>
+			<referrer name="create_new_vehicle"/>
+			<referrer name="create_old_vehicle"/>
+		</member>
+		<member name="F:gVehicleDataShow">
+			<referrer name="update_vehicle_state"/>
+			<referrer name="create_vehicle_sensors"/>
+			<referrer name="destroy_vehicle_sensors"/>
+			<referrer name="update_vehicle_sensors"/>
+		</member>
+		<member name="F:gVehicleMenuShow">
+			<referrer name="get_object_data"/>
+		</member>
+		<member name="F:gWeaponUpdate">
+		</member>
+		<member name="F:gWound">
+			<referrer name="update_live_sensors"/>
+			<referrer name="create_sensors"/>
+			<referrer name="save_state_and_position"/>
+		</member>
+		<member name="F:sensors">
+			<tagname value="PlayerText"/>
+			<referrer name="create_sensors"/>
+			<referrer name="destroy_sensors"/>
+			<referrer name="update_sensor_health"/>
+			<referrer name="update_sensor_hunger"/>
+			<referrer name="update_sensor_thirst"/>
+			<referrer name="update_sensor_wound"/>
+		</member>
+		<member name="F:smokescreen">
+			<tagname value="Text"/>
+			<referrer name="create_smokescreen"/>
+			<referrer name="show_smokescreen"/>
+			<referrer name="hide_smokescreen"/>
+			<referrer name="show_smoke_statistic"/>
+			<referrer name="hide_smoke_statistic"/>
+			<referrer name="destroy_smokescreen"/>
+		</member>
+
+		<!-- functions -->
+		<member name="M:operator!(Float:)" syntax="operator!(Float:)(oper)">
+			<tagname value="bool"/>
+			<stacksize value="1"/>
+			<dependency name="cellmax"/>
+			<param name="oper">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator%(_:,Float:)" syntax="operator%(_:,Float:)(oper1, oper2)">
+			<stacksize value="1"/>
+			<param name="oper1">
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator%(Float:,_:)" syntax="operator%(Float:,_:)(oper1, oper2)">
+			<stacksize value="1"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator%(Float:,Float:)" syntax="operator%(Float:,Float:)(oper1, oper2)">
+			<stacksize value="1"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator!=(Float:,_:)" syntax="operator!=(Float:,_:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator!=(Float:,Float:)" syntax="operator!=(Float:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator-(_:,Float:)" syntax="operator-(_:,Float:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatsub"/>
+			<param name="oper1">
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator-(Float:,_:)" syntax="operator-(Float:,_:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatsub"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator+(Float:,_:)" syntax="operator+(Float:,_:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<stacksize value="4"/>
+			<referrer name="create_sensors"/>
+			<referrer name="go_to_thing_place"/>
+			<dependency name="float"/>
+			<dependency name="floatadd"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator/(_:,Float:)" syntax="operator/(_:,Float:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatdiv"/>
+			<param name="oper1">
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator/(Float:,_:)" syntax="operator/(Float:,_:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatdiv"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator*(Float:,_:)" syntax="operator*(Float:,_:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatmul"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator++(Float:)" syntax="operator++(Float:)(oper)">
+			<tagname value="Float"/>
+			<stacksize value="1"/>
+			<dependency name="operator+(Float:,Float:)"/>
+			<param name="oper">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator-(Float:)" syntax="operator-(Float:)(oper)">
+			<tagname value="Float"/>
+			<stacksize value="1"/>
+			<dependency name="cellmin"/>
+			<param name="oper">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator--(Float:)" syntax="operator--(Float:)(oper)">
+			<tagname value="Float"/>
+			<stacksize value="1"/>
+			<dependency name="operator-(Float:,Float:)"/>
+			<param name="oper">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator-(Float:,Float:)" syntax="operator-(Float:,Float:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="operator--(Float:)"/>
+			<referrer name="cheater_finder"/>
+			<referrer name="create_vehicle_sensors"/>
+			<referrer name="update_vehicle_sensors"/>
+			<referrer name="set_objects_cells"/>
+			<referrer name="is_any_object_in_range"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator+(Float:,Float:)" syntax="operator+(Float:,Float:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="operator++(Float:)"/>
+			<referrer name="create_vehicle_sensors"/>
+			<referrer name="update_vehicle_sensors"/>
+			<referrer name="load_objects"/>
+			<referrer name="set_new_objects_on_places"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="put_object_on_free_place"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator/(Float:,Float:)" syntax="operator/(Float:,Float:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="create_vehicle_sensors"/>
+			<referrer name="update_vehicle_sensors"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator*(Float:,Float:)" syntax="operator*(Float:,Float:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="create_vehicle_sensors"/>
+			<referrer name="update_vehicle_sensors"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:Float:operator=(_:)" syntax="Float:operator=(_:)(oper)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="create_sensors"/>
+			<referrer name="update_sensor_health"/>
+			<referrer name="load_objects"/>
+			<referrer name="set_new_objects_on_places"/>
+			<referrer name="put_object_on_free_place"/>
+			<param name="oper">
+			</param>
+		</member>
+		<member name="M:operator==(Float:,Float:)" syntax="operator==(Float:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<referrer name="cheater_finder"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator==(Float:,_:)" syntax="operator==(Float:,_:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<referrer name="load_objects"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator&gt;(Float:,Float:)" syntax="operator&gt;(Float:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<referrer name="update_vehicle_state"/>
+			<referrer name="cheater_finder"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator&gt;(Float:,_:)" syntax="operator&gt;(Float:,_:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator&gt;(_:,Float:)" syntax="operator&gt;(_:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator&gt;=(Float:,Float:)" syntax="operator&gt;=(Float:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator&gt;=(Float:,_:)" syntax="operator&gt;=(Float:,_:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator&gt;=(_:,Float:)" syntax="operator&gt;=(_:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator&lt;(Float:,Float:)" syntax="operator&lt;(Float:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<referrer name="create_vehicle_sensors"/>
+			<referrer name="update_vehicle_sensors"/>
+			<referrer name="set_objects_cells"/>
+			<referrer name="is_any_object_in_range"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator&lt;(Float:,_:)" syntax="operator&lt;(Float:,_:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator&lt;(_:,Float:)" syntax="operator&lt;(_:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator&lt;=(Float:,Float:)" syntax="operator&lt;=(Float:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator&lt;=(Float:,_:)" syntax="operator&lt;=(Float:,_:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<referrer name="load_player_position"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator&lt;=(_:,Float:)" syntax="operator&lt;=(_:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:@receivepacket" syntax="@receivepacket(packet[], size, source[])">
+			<attribute name="public"/>
+			<stacksize value="1"/>
+			<param name="packet">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="size">
+			</param>
+			<param name="source">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:@receivestring" syntax="@receivestring(message[], source[])">
+			<attribute name="public"/>
+			<stacksize value="1"/>
+			<param name="message">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="source">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:CreateDynamicObject" syntax="CreateDynamicObject(modelid, x, y, z, rx, ry, rz, worldid, interiorid, playerid, streamdistance, drawdistance)">
+			<attribute name="native"/>
+			<referrer name="load_objects"/>
+			<referrer name="set_new_objects_on_places"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="put_object_on_free_place"/>
+			<param name="modelid">
+			</param>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="rx">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="ry">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="rz">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="worldid">
+			</param>
+			<param name="interiorid">
+			</param>
+			<param name="playerid">
+			</param>
+			<param name="streamdistance">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="drawdistance">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:CreatePlayerTextDraw" syntax="CreatePlayerTextDraw(playerid, x, y, text[])">
+			<tagname value="PlayerText"/>
+			<attribute name="native"/>
+			<referrer name="create_sensors"/>
+			<referrer name="create_vehicle_sensors"/>
+			<referrer name="update_vehicle_sensors"/>
+			<referrer name="create_statistic_data"/>
+			<param name="playerid">
+			</param>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="text">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:CreateVehicle" syntax="CreateVehicle(vehicletype, x, y, z, rotation, color1, color2, respawn_delay)">
+			<attribute name="native"/>
+			<referrer name="create_new_vehicle"/>
+			<referrer name="create_old_vehicle"/>
+			<param name="vehicletype">
+			</param>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="rotation">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="color1">
+			</param>
+			<param name="color2">
+			</param>
+			<param name="respawn_delay">
+			</param>
+		</member>
+		<member name="M:DestroyDynamicObject" syntax="DestroyDynamicObject(objectid)">
+			<attribute name="native"/>
+			<referrer name="destroy_objects"/>
+			<referrer name="set_character_inventory_cell"/>
+			<referrer name="set_vehicle_inventory_cell"/>
+			<referrer name="get_objects_properties"/>
+			<referrer name="get_vehicle_objects_properties"/>
+			<referrer name="get_inventory_properties"/>
+			<param name="objectid">
+			</param>
+		</member>
+		<member name="M:DestroyVehicle" syntax="DestroyVehicle(vehicleid)">
+			<attribute name="native"/>
+			<referrer name="update_vehicle_state"/>
+			<referrer name="destroy_objects"/>
+			<referrer name="save_vehicle_state"/>
+			<referrer name="put_object_on_free_place"/>
+			<param name="vehicleid">
+			</param>
+		</member>
+		<member name="M:GangZoneCreate" syntax="GangZoneCreate(minx, miny, maxx, maxy)">
+			<attribute name="native"/>
+			<referrer name="create_smokescreen"/>
+			<param name="minx">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="miny">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="maxx">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="maxy">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:GangZoneDestroy" syntax="GangZoneDestroy(zone)">
+			<attribute name="native"/>
+			<referrer name="destroy_smokescreen"/>
+			<param name="zone">
+			</param>
+		</member>
+		<member name="M:GangZoneHideForPlayer" syntax="GangZoneHideForPlayer(playerid, zone)">
+			<attribute name="native"/>
+			<referrer name="hide_smoke_map"/>
+			<param name="playerid">
+			</param>
+			<param name="zone">
+			</param>
+		</member>
+		<member name="M:GangZoneShowForAll" syntax="GangZoneShowForAll(zone, color)">
+			<attribute name="native"/>
+			<referrer name="create_smokescreen"/>
+			<param name="zone">
+			</param>
+			<param name="color">
+			</param>
+		</member>
+		<member name="M:GangZoneShowForPlayer" syntax="GangZoneShowForPlayer(playerid, zone, color)">
+			<attribute name="native"/>
+			<referrer name="show_smoke_map"/>
+			<param name="playerid">
+			</param>
+			<param name="zone">
+			</param>
+			<param name="color">
+			</param>
+		</member>
+		<member name="M:GetPlayerFacingAngle" syntax="GetPlayerFacingAngle(playerid, &amp;ang)">
+			<attribute name="native"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="save_player_position"/>
+			<referrer name="save_state_and_position"/>
+			<referrer name="add_spawn_place"/>
+			<param name="playerid">
+			</param>
+			<param name="ang">
+				<paraminfo>Float &amp; </paraminfo>
+			</param>
+		</member>
+		<member name="M:GetPlayerIp" syntax="GetPlayerIp(playerid, name[], len)">
+			<attribute name="native"/>
+			<referrer name="create_player"/>
+			<referrer name="update_player"/>
+			<param name="playerid">
+			</param>
+			<param name="name">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="len">
+			</param>
+		</member>
+		<member name="M:GetPlayerName" syntax="GetPlayerName(playerid, name[], len)">
+			<attribute name="native"/>
+			<referrer name="cheater_finder"/>
+			<referrer name="create_statistic_data"/>
+			<referrer name="player_login"/>
+			<referrer name="create_player"/>
+			<referrer name="set_player_id"/>
+			<referrer name="update_player"/>
+			<referrer name="initialize_players"/>
+			<param name="playerid">
+			</param>
+			<param name="name">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="len">
+			</param>
+		</member>
+		<member name="M:GetPlayerPos" syntax="GetPlayerPos(playerid, &amp;x, &amp;y, &amp;z)">
+			<attribute name="native"/>
+			<referrer name="cheater_finder"/>
+			<referrer name="set_objects_cells"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="save_player_position"/>
+			<referrer name="save_state_and_position"/>
+			<referrer name="add_spawn_place"/>
+			<referrer name="add_dot_place"/>
+			<referrer name="add_car_place"/>
+			<param name="playerid">
+			</param>
+			<param name="x">
+				<paraminfo>Float &amp; </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float &amp; </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float &amp; </paraminfo>
+			</param>
+		</member>
+		<member name="M:GetPlayerState" syntax="GetPlayerState(playerid)">
+			<attribute name="native"/>
+			<referrer name="IsPlayerSpawned"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:GetVehicleDamageStatus" syntax="GetVehicleDamageStatus(vehicleid, &amp;panels, &amp;doors, &amp;lights, &amp;tires)">
+			<attribute name="native"/>
+			<referrer name="save_vehicle_state"/>
+			<referrer name="save_vehicle_position"/>
+			<param name="vehicleid">
+			</param>
+			<param name="panels">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+			<param name="doors">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+			<param name="lights">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+			<param name="tires">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+		</member>
+		<member name="M:GetVehicleHealth" syntax="GetVehicleHealth(vehicleid, &amp;health)">
+			<attribute name="native"/>
+			<referrer name="update_vehicle_state"/>
+			<param name="vehicleid">
+			</param>
+			<param name="health">
+				<paraminfo>Float &amp; </paraminfo>
+			</param>
+		</member>
+		<member name="M:GetVehicleParamsEx" syntax="GetVehicleParamsEx(vehicleid, &amp;engine, &amp;lights, &amp;alarm, &amp;doors, &amp;bonnet, &amp;boot, &amp;objective)">
+			<attribute name="native"/>
+			<referrer name="save_vehicle_state"/>
+			<referrer name="save_vehicle_position"/>
+			<param name="vehicleid">
+			</param>
+			<param name="engine">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+			<param name="lights">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+			<param name="alarm">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+			<param name="doors">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+			<param name="bonnet">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+			<param name="boot">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+			<param name="objective">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+		</member>
+		<member name="M:GetVehiclePos" syntax="GetVehiclePos(vehicleid, &amp;x, &amp;y, &amp;z)">
+			<attribute name="native"/>
+			<referrer name="save_vehicle_state"/>
+			<referrer name="save_vehicle_position"/>
+			<referrer name="drop_vehicle_from_dot"/>
+			<param name="vehicleid">
+			</param>
+			<param name="x">
+				<paraminfo>Float &amp; </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float &amp; </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float &amp; </paraminfo>
+			</param>
+		</member>
+		<member name="M:GetVehicleZAngle" syntax="GetVehicleZAngle(vehicleid, &amp;z_angle)">
+			<attribute name="native"/>
+			<referrer name="save_vehicle_state"/>
+			<referrer name="save_vehicle_position"/>
+			<param name="vehicleid">
+			</param>
+			<param name="z_angle">
+				<paraminfo>Float &amp; </paraminfo>
+			</param>
+		</member>
+		<member name="M:IsPlayerAdmin" syntax="IsPlayerAdmin(playerid)">
+			<attribute name="native"/>
+			<referrer name="update_vehicle_state"/>
+			<referrer name="cheater_finder"/>
+			<referrer name="save_vehicle_state"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:IsPlayerConnected" syntax="IsPlayerConnected(playerid)">
+			<attribute name="native"/>
+			<referrer name="update_character_state"/>
+			<referrer name="update_live_sensors"/>
+			<referrer name="initialize_players"/>
+			<referrer name="free_players"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:IsPlayerInVehicle" syntax="IsPlayerInVehicle(playerid, vehicleid)">
+			<attribute name="native"/>
+			<referrer name="update_vehicle_state"/>
+			<param name="playerid">
+			</param>
+			<param name="vehicleid">
+			</param>
+		</member>
+		<member name="M:IsPlayerSpawned" syntax="IsPlayerSpawned(playerid)">
+			<stacksize value="4"/>
+			<referrer name="update_character_state"/>
+			<referrer name="update_live_sensors"/>
+			<referrer name="cheater_finder"/>
+			<dependency name="GetPlayerState"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:IsValidDynamicObject" syntax="IsValidDynamicObject(objectid)">
+			<attribute name="native"/>
+			<referrer name="set_character_inventory_cell"/>
+			<referrer name="set_vehicle_inventory_cell"/>
+			<referrer name="get_objects_properties"/>
+			<referrer name="get_vehicle_objects_properties"/>
+			<referrer name="get_inventory_properties"/>
+			<param name="objectid">
+			</param>
+		</member>
+		<member name="M:MapAndreas_Valid_Z_Coordinate" syntax="MapAndreas_Valid_Z_Coordinate(X, Y, PlayerZ, &amp;Z, &amp;Azimuth, &amp;Angle)">
+			<attribute name="native"/>
+			<referrer name="load_objects"/>
+			<referrer name="set_new_objects_on_places"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="put_object_on_free_place"/>
+			<param name="X">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="Y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="PlayerZ">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="Z">
+				<paraminfo>Float &amp; </paraminfo>
+			</param>
+			<param name="Azimuth">
+				<paraminfo>Float &amp; </paraminfo>
+			</param>
+			<param name="Angle">
+				<paraminfo>Float &amp; </paraminfo>
+			</param>
+		</member>
+		<member name="M:OnDialogResponse" syntax="OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="dialogid">
+			</param>
+			<param name="response">
+			</param>
+			<param name="listitem">
+			</param>
+			<param name="inputtext">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:OnDynamicObjectMoved" syntax="OnDynamicObjectMoved(objectid)">
+			<stacksize value="1"/>
+			<param name="objectid">
+			</param>
+		</member>
+		<member name="M:OnEnterExitModShop" syntax="OnEnterExitModShop(playerid, enterexit, interiorid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="enterexit">
+			</param>
+			<param name="interiorid">
+			</param>
+		</member>
+		<member name="M:OnFilterScriptExit" syntax="OnFilterScriptExit()">
+			<stacksize value="1"/>
+		</member>
+		<member name="M:OnFilterScriptInit" syntax="OnFilterScriptInit()">
+			<stacksize value="1"/>
+		</member>
+		<member name="M:OnGameModeExit" syntax="OnGameModeExit()">
+			<stacksize value="1"/>
+		</member>
+		<member name="M:OnGameModeInit" syntax="OnGameModeInit()">
+			<stacksize value="1"/>
+		</member>
+		<member name="M:OnObjectMoved" syntax="OnObjectMoved(objectid)">
+			<stacksize value="1"/>
+			<param name="objectid">
+			</param>
+		</member>
+		<member name="M:OnPlayerClickMap" syntax="OnPlayerClickMap(playerid, fX, fY, fZ)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="fX">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fY">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fZ">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:OnPlayerClickPlayer" syntax="OnPlayerClickPlayer(playerid, clickedplayerid, source)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="clickedplayerid">
+			</param>
+			<param name="source">
+			</param>
+		</member>
+		<member name="M:OnPlayerClickPlayerTextDraw" syntax="OnPlayerClickPlayerTextDraw(playerid, playertextid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="playertextid">
+				<paraminfo>PlayerText </paraminfo>
+			</param>
+		</member>
+		<member name="M:OnPlayerClickTextDraw" syntax="OnPlayerClickTextDraw(playerid, clickedid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="clickedid">
+				<paraminfo>Text </paraminfo>
+			</param>
+		</member>
+		<member name="M:OnPlayerCommandText" syntax="OnPlayerCommandText(playerid, cmdtext[])">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="cmdtext">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:OnPlayerConnect" syntax="OnPlayerConnect(playerid)">
+			<attribute name="public"/>
+			<stacksize value="4"/>
+			<dependency name="Streamer_CallbackHook"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:OnPlayerDeath" syntax="OnPlayerDeath(playerid, killerid, reason)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="killerid">
+			</param>
+			<param name="reason">
+			</param>
+		</member>
+		<member name="M:OnPlayerDisconnect" syntax="OnPlayerDisconnect(playerid, reason)">
+			<attribute name="public"/>
+			<stacksize value="5"/>
+			<dependency name="Streamer_CallbackHook"/>
+			<param name="playerid">
+			</param>
+			<param name="reason">
+			</param>
+		</member>
+		<member name="M:OnPlayerEditAttachedObject" syntax="OnPlayerEditAttachedObject(playerid, response, index, modelid, boneid, fOffsetX, fOffsetY, fOffsetZ, fRotX, fRotY, fRotZ, fScaleX, fScaleY, fScaleZ)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="response">
+			</param>
+			<param name="index">
+			</param>
+			<param name="modelid">
+			</param>
+			<param name="boneid">
+			</param>
+			<param name="fOffsetX">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fOffsetY">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fOffsetZ">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fRotX">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fRotY">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fRotZ">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fScaleX">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fScaleY">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fScaleZ">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:OnPlayerEditDynamicObject" syntax="OnPlayerEditDynamicObject(playerid, objectid, response, x, y, z, rx, ry, rz)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="objectid">
+			</param>
+			<param name="response">
+			</param>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="rx">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="ry">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="rz">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:OnPlayerEditObject" syntax="OnPlayerEditObject(playerid, playerobject, objectid, response, fX, fY, fZ, fRotX, fRotY, fRotZ)">
+			<attribute name="public"/>
+			<stacksize value="13"/>
+			<dependency name="Streamer_CallbackHook"/>
+			<param name="playerid">
+			</param>
+			<param name="playerobject">
+			</param>
+			<param name="objectid">
+			</param>
+			<param name="response">
+			</param>
+			<param name="fX">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fY">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fZ">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fRotX">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fRotY">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fRotZ">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:OnPlayerEnterCheckpoint" syntax="OnPlayerEnterCheckpoint(playerid)">
+			<attribute name="public"/>
+			<stacksize value="4"/>
+			<dependency name="Streamer_CallbackHook"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:OnPlayerEnterDynamicArea" syntax="OnPlayerEnterDynamicArea(playerid, areaid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="areaid">
+			</param>
+		</member>
+		<member name="M:OnPlayerEnterDynamicCP" syntax="OnPlayerEnterDynamicCP(playerid, checkpointid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="checkpointid">
+			</param>
+		</member>
+		<member name="M:OnPlayerEnterDynamicRaceCP" syntax="OnPlayerEnterDynamicRaceCP(playerid, checkpointid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="checkpointid">
+			</param>
+		</member>
+		<member name="M:OnPlayerEnterRaceCheckpoint" syntax="OnPlayerEnterRaceCheckpoint(playerid)">
+			<attribute name="public"/>
+			<stacksize value="4"/>
+			<dependency name="Streamer_CallbackHook"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:OnPlayerEnterVehicle" syntax="OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="vehicleid">
+			</param>
+			<param name="ispassenger">
+			</param>
+		</member>
+		<member name="M:OnPlayerExitVehicle" syntax="OnPlayerExitVehicle(playerid, vehicleid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="vehicleid">
+			</param>
+		</member>
+		<member name="M:OnPlayerExitedMenu" syntax="OnPlayerExitedMenu(playerid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:OnPlayerGiveDamage" syntax="OnPlayerGiveDamage(playerid, damagedid, amount, weaponid, bodypart)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="damagedid">
+			</param>
+			<param name="amount">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="weaponid">
+			</param>
+			<param name="bodypart">
+			</param>
+		</member>
+		<member name="M:OnPlayerInteriorChange" syntax="OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="newinteriorid">
+			</param>
+			<param name="oldinteriorid">
+			</param>
+		</member>
+		<member name="M:OnPlayerKeyStateChange" syntax="OnPlayerKeyStateChange(playerid, newkeys, oldkeys)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="newkeys">
+			</param>
+			<param name="oldkeys">
+			</param>
+		</member>
+		<member name="M:OnPlayerLeaveCheckpoint" syntax="OnPlayerLeaveCheckpoint(playerid)">
+			<attribute name="public"/>
+			<stacksize value="4"/>
+			<dependency name="Streamer_CallbackHook"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:OnPlayerLeaveDynamicArea" syntax="OnPlayerLeaveDynamicArea(playerid, areaid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="areaid">
+			</param>
+		</member>
+		<member name="M:OnPlayerLeaveDynamicCP" syntax="OnPlayerLeaveDynamicCP(playerid, checkpointid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="checkpointid">
+			</param>
+		</member>
+		<member name="M:OnPlayerLeaveDynamicRaceCP" syntax="OnPlayerLeaveDynamicRaceCP(playerid, checkpointid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="checkpointid">
+			</param>
+		</member>
+		<member name="M:OnPlayerLeaveRaceCheckpoint" syntax="OnPlayerLeaveRaceCheckpoint(playerid)">
+			<attribute name="public"/>
+			<stacksize value="4"/>
+			<dependency name="Streamer_CallbackHook"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:OnPlayerObjectMoved" syntax="OnPlayerObjectMoved(playerid, objectid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="objectid">
+			</param>
+		</member>
+		<member name="M:OnPlayerPickUpDynamicPickup" syntax="OnPlayerPickUpDynamicPickup(playerid, pickupid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="pickupid">
+			</param>
+		</member>
+		<member name="M:OnPlayerPickUpPickup" syntax="OnPlayerPickUpPickup(playerid, pickupid)">
+			<attribute name="public"/>
+			<stacksize value="5"/>
+			<dependency name="Streamer_CallbackHook"/>
+			<param name="playerid">
+			</param>
+			<param name="pickupid">
+			</param>
+		</member>
+		<member name="M:OnPlayerRequestClass" syntax="OnPlayerRequestClass(playerid, classid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="classid">
+			</param>
+		</member>
+		<member name="M:OnPlayerRequestSpawn" syntax="OnPlayerRequestSpawn(playerid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:OnPlayerSelectDynamicObject" syntax="OnPlayerSelectDynamicObject(playerid, objectid, modelid, x, y, z)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="objectid">
+			</param>
+			<param name="modelid">
+			</param>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:OnPlayerSelectObject" syntax="OnPlayerSelectObject(playerid, type, objectid, modelid, fX, fY, fZ)">
+			<attribute name="public"/>
+			<stacksize value="10"/>
+			<dependency name="Streamer_CallbackHook"/>
+			<param name="playerid">
+			</param>
+			<param name="type">
+			</param>
+			<param name="objectid">
+			</param>
+			<param name="modelid">
+			</param>
+			<param name="fX">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fY">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fZ">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:OnPlayerSelectedMenuRow" syntax="OnPlayerSelectedMenuRow(playerid, row)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="row">
+			</param>
+		</member>
+		<member name="M:OnPlayerShootDynamicObject" syntax="OnPlayerShootDynamicObject(playerid, weaponid, objectid, x, y, z)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="weaponid">
+			</param>
+			<param name="objectid">
+			</param>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:OnPlayerSpawn" syntax="OnPlayerSpawn(playerid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:OnPlayerStateChange" syntax="OnPlayerStateChange(playerid, newstate, oldstate)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="newstate">
+			</param>
+			<param name="oldstate">
+			</param>
+		</member>
+		<member name="M:OnPlayerStreamIn" syntax="OnPlayerStreamIn(playerid, forplayerid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="forplayerid">
+			</param>
+		</member>
+		<member name="M:OnPlayerStreamOut" syntax="OnPlayerStreamOut(playerid, forplayerid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="forplayerid">
+			</param>
+		</member>
+		<member name="M:OnPlayerTakeDamage" syntax="OnPlayerTakeDamage(playerid, issuerid, amount, weaponid, bodypart)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="issuerid">
+			</param>
+			<param name="amount">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="weaponid">
+			</param>
+			<param name="bodypart">
+			</param>
+		</member>
+		<member name="M:OnPlayerText" syntax="OnPlayerText(playerid, text[])">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="text">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:OnPlayerUpdate" syntax="OnPlayerUpdate(playerid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:OnPlayerWeaponShot" syntax="OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, fX, fY, fZ)">
+			<attribute name="public"/>
+			<stacksize value="10"/>
+			<dependency name="Streamer_CallbackHook"/>
+			<param name="playerid">
+			</param>
+			<param name="weaponid">
+			</param>
+			<param name="hittype">
+			</param>
+			<param name="hitid">
+			</param>
+			<param name="fX">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fY">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="fZ">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:OnQueryError" syntax="OnQueryError(errorid, error[], callback[], query[], connectionHandle)">
+			<stacksize value="1"/>
+			<param name="errorid">
+			</param>
+			<param name="error">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="callback">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="query">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="connectionHandle">
+			</param>
+		</member>
+		<member name="M:OnRconCommand" syntax="OnRconCommand(cmd[])">
+			<stacksize value="1"/>
+			<param name="cmd">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:OnRconLoginAttempt" syntax="OnRconLoginAttempt(ip[], password[], success)">
+			<stacksize value="1"/>
+			<param name="ip">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="password">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="success">
+			</param>
+		</member>
+		<member name="M:OnUnoccupiedVehicleUpdate" syntax="OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat, new_x, new_y, new_z)">
+			<stacksize value="1"/>
+			<param name="vehicleid">
+			</param>
+			<param name="playerid">
+			</param>
+			<param name="passenger_seat">
+			</param>
+			<param name="new_x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="new_y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="new_z">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:OnVehicleDamageStatusUpdate" syntax="OnVehicleDamageStatusUpdate(vehicleid, playerid)">
+			<stacksize value="1"/>
+			<param name="vehicleid">
+			</param>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:OnVehicleDeath" syntax="OnVehicleDeath(vehicleid, killerid)">
+			<stacksize value="1"/>
+			<param name="vehicleid">
+			</param>
+			<param name="killerid">
+			</param>
+		</member>
+		<member name="M:OnVehicleMod" syntax="OnVehicleMod(playerid, vehicleid, componentid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="vehicleid">
+			</param>
+			<param name="componentid">
+			</param>
+		</member>
+		<member name="M:OnVehiclePaintjob" syntax="OnVehiclePaintjob(playerid, vehicleid, paintjobid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="vehicleid">
+			</param>
+			<param name="paintjobid">
+			</param>
+		</member>
+		<member name="M:OnVehicleRespray" syntax="OnVehicleRespray(playerid, vehicleid, color1, color2)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+			<param name="vehicleid">
+			</param>
+			<param name="color1">
+			</param>
+			<param name="color2">
+			</param>
+		</member>
+		<member name="M:OnVehicleSpawn" syntax="OnVehicleSpawn(vehicleid)">
+			<stacksize value="1"/>
+			<param name="vehicleid">
+			</param>
+		</member>
+		<member name="M:OnVehicleStreamIn" syntax="OnVehicleStreamIn(vehicleid, forplayerid)">
+			<stacksize value="1"/>
+			<param name="vehicleid">
+			</param>
+			<param name="forplayerid">
+			</param>
+		</member>
+		<member name="M:OnVehicleStreamOut" syntax="OnVehicleStreamOut(vehicleid, forplayerid)">
+			<stacksize value="1"/>
+			<param name="vehicleid">
+			</param>
+			<param name="forplayerid">
+			</param>
+		</member>
+		<member name="M:PlayerTextDrawAlignment" syntax="PlayerTextDrawAlignment(playerid, text, alignment)">
+			<attribute name="native"/>
+			<referrer name="create_statistic_data"/>
+			<param name="playerid">
+			</param>
+			<param name="text">
+				<paraminfo>PlayerText </paraminfo>
+			</param>
+			<param name="alignment">
+			</param>
+		</member>
+		<member name="M:PlayerTextDrawBackgroundColor" syntax="PlayerTextDrawBackgroundColor(playerid, text, color)">
+			<attribute name="native"/>
+			<referrer name="create_vehicle_sensors"/>
+			<referrer name="update_vehicle_sensors"/>
+			<param name="playerid">
+			</param>
+			<param name="text">
+				<paraminfo>PlayerText </paraminfo>
+			</param>
+			<param name="color">
+			</param>
+		</member>
+		<member name="M:PlayerTextDrawBoxColor" syntax="PlayerTextDrawBoxColor(playerid, text, color)">
+			<attribute name="native"/>
+			<referrer name="create_vehicle_sensors"/>
+			<referrer name="update_vehicle_sensors"/>
+			<param name="playerid">
+			</param>
+			<param name="text">
+				<paraminfo>PlayerText </paraminfo>
+			</param>
+			<param name="color">
+			</param>
+		</member>
+		<member name="M:PlayerTextDrawColor" syntax="PlayerTextDrawColor(playerid, text, color)">
+			<attribute name="native"/>
+			<referrer name="create_vehicle_sensors"/>
+			<referrer name="update_vehicle_sensors"/>
+			<referrer name="update_sensor_health"/>
+			<referrer name="update_sensor_hunger"/>
+			<referrer name="update_sensor_thirst"/>
+			<referrer name="update_sensor_wound"/>
+			<referrer name="create_statistic_data"/>
+			<param name="playerid">
+			</param>
+			<param name="text">
+				<paraminfo>PlayerText </paraminfo>
+			</param>
+			<param name="color">
+			</param>
+		</member>
+		<member name="M:PlayerTextDrawDestroy" syntax="PlayerTextDrawDestroy(playerid, text)">
+			<attribute name="native"/>
+			<referrer name="destroy_sensors"/>
+			<referrer name="destroy_vehicle_sensors"/>
+			<referrer name="destroy_statistic_data"/>
+			<param name="playerid">
+			</param>
+			<param name="text">
+				<paraminfo>PlayerText </paraminfo>
+			</param>
+		</member>
+		<member name="M:PlayerTextDrawFont" syntax="PlayerTextDrawFont(playerid, text, font)">
+			<attribute name="native"/>
+			<referrer name="create_sensors"/>
+			<referrer name="create_statistic_data"/>
+			<param name="playerid">
+			</param>
+			<param name="text">
+				<paraminfo>PlayerText </paraminfo>
+			</param>
+			<param name="font">
+			</param>
+		</member>
+		<member name="M:PlayerTextDrawHide" syntax="PlayerTextDrawHide(playerid, text)">
+			<attribute name="native"/>
+			<referrer name="update_vehicle_sensors"/>
+			<referrer name="update_sensor_health"/>
+			<referrer name="update_sensor_hunger"/>
+			<referrer name="update_sensor_thirst"/>
+			<referrer name="update_sensor_wound"/>
+			<referrer name="hide_statistic_data"/>
+			<referrer name="update_statistic_data"/>
+			<param name="playerid">
+			</param>
+			<param name="text">
+				<paraminfo>PlayerText </paraminfo>
+			</param>
+		</member>
+		<member name="M:PlayerTextDrawLetterSize" syntax="PlayerTextDrawLetterSize(playerid, text, x, y)">
+			<attribute name="native"/>
+			<referrer name="create_vehicle_sensors"/>
+			<referrer name="update_vehicle_sensors"/>
+			<param name="playerid">
+			</param>
+			<param name="text">
+				<paraminfo>PlayerText </paraminfo>
+			</param>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:PlayerTextDrawSetShadow" syntax="PlayerTextDrawSetShadow(playerid, text, size)">
+			<attribute name="native"/>
+			<referrer name="create_vehicle_sensors"/>
+			<referrer name="update_vehicle_sensors"/>
+			<param name="playerid">
+			</param>
+			<param name="text">
+				<paraminfo>PlayerText </paraminfo>
+			</param>
+			<param name="size">
+			</param>
+		</member>
+		<member name="M:PlayerTextDrawSetString" syntax="PlayerTextDrawSetString(playerid, text, string[])">
+			<attribute name="native"/>
+			<referrer name="update_statistic_data"/>
+			<param name="playerid">
+			</param>
+			<param name="text">
+				<paraminfo>PlayerText </paraminfo>
+			</param>
+			<param name="string">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:PlayerTextDrawShow" syntax="PlayerTextDrawShow(playerid, text)">
+			<attribute name="native"/>
+			<referrer name="create_sensors"/>
+			<referrer name="create_vehicle_sensors"/>
+			<referrer name="update_vehicle_sensors"/>
+			<referrer name="update_sensor_health"/>
+			<referrer name="update_sensor_hunger"/>
+			<referrer name="update_sensor_thirst"/>
+			<referrer name="update_sensor_wound"/>
+			<referrer name="show_statistic_data"/>
+			<referrer name="update_statistic_data"/>
+			<param name="playerid">
+			</param>
+			<param name="text">
+				<paraminfo>PlayerText </paraminfo>
+			</param>
+		</member>
+		<member name="M:PlayerTextDrawTextSize" syntax="PlayerTextDrawTextSize(playerid, text, x, y)">
+			<attribute name="native"/>
+			<referrer name="create_sensors"/>
+			<referrer name="create_vehicle_sensors"/>
+			<referrer name="update_vehicle_sensors"/>
+			<param name="playerid">
+			</param>
+			<param name="text">
+				<paraminfo>PlayerText </paraminfo>
+			</param>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:PlayerTextDrawUseBox" syntax="PlayerTextDrawUseBox(playerid, text, use)">
+			<attribute name="native"/>
+			<referrer name="create_vehicle_sensors"/>
+			<referrer name="update_vehicle_sensors"/>
+			<param name="playerid">
+			</param>
+			<param name="text">
+				<paraminfo>PlayerText </paraminfo>
+			</param>
+			<param name="use">
+			</param>
+		</member>
+		<member name="M:ResetPlayerWeapons" syntax="ResetPlayerWeapons(playerid)">
+			<attribute name="native"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="give_vehicle_inventory_cell"/>
+			<referrer name="disassemble_cell_object"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:SendClientMessage" syntax="SendClientMessage(playerid, color, message[])">
+			<attribute name="native"/>
+			<referrer name="update_vehicle_state"/>
+			<referrer name="save_vehicle_state"/>
+			<param name="playerid">
+			</param>
+			<param name="color">
+			</param>
+			<param name="message">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:SendClientMessageToAll" syntax="SendClientMessageToAll(color, message[])">
+			<attribute name="native"/>
+			<referrer name="cheater_finder"/>
+			<param name="color">
+			</param>
+			<param name="message">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:SetCameraBehindPlayer" syntax="SetCameraBehindPlayer(playerid)">
+			<attribute name="native"/>
+			<referrer name="load_player_position"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:SetPlayerFacingAngle" syntax="SetPlayerFacingAngle(playerid, ang)">
+			<attribute name="native"/>
+			<referrer name="load_player_position"/>
+			<param name="playerid">
+			</param>
+			<param name="ang">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:SetPlayerHealth" syntax="SetPlayerHealth(playerid, health)">
+			<attribute name="native"/>
+			<referrer name="update_sensor_health"/>
+			<referrer name="kill_character"/>
+			<param name="playerid">
+			</param>
+			<param name="health">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:SetPlayerPos" syntax="SetPlayerPos(playerid, x, y, z)">
+			<attribute name="native"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="load_player_position"/>
+			<referrer name="go_to_thing_place"/>
+			<param name="playerid">
+			</param>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:SetPlayerPosFindZ" syntax="SetPlayerPosFindZ(playerid, x, y, z)">
+			<attribute name="native"/>
+			<referrer name="load_player_position"/>
+			<param name="playerid">
+			</param>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:SetPlayerScore" syntax="SetPlayerScore(playerid, score)">
+			<attribute name="native"/>
+			<referrer name="create_sensors"/>
+			<referrer name="upscore_character"/>
+			<param name="playerid">
+			</param>
+			<param name="score">
+			</param>
+		</member>
+		<member name="M:SetVehicleParamsEx" syntax="SetVehicleParamsEx(vehicleid, engine, lights, alarm, doors, bonnet, boot, objective)">
+			<attribute name="native"/>
+			<referrer name="save_vehicle_state"/>
+			<referrer name="create_new_vehicle"/>
+			<referrer name="create_old_vehicle"/>
+			<param name="vehicleid">
+			</param>
+			<param name="engine">
+			</param>
+			<param name="lights">
+			</param>
+			<param name="alarm">
+			</param>
+			<param name="doors">
+			</param>
+			<param name="bonnet">
+			</param>
+			<param name="boot">
+			</param>
+			<param name="objective">
+			</param>
+		</member>
+		<member name="M:Streamer_CallbackHook" syntax="Streamer_CallbackHook(callback, ...)">
+			<attribute name="native"/>
+			<referrer name="OnPlayerConnect"/>
+			<referrer name="OnPlayerDisconnect"/>
+			<referrer name="OnPlayerEditObject"/>
+			<referrer name="OnPlayerSelectObject"/>
+			<referrer name="OnPlayerPickUpPickup"/>
+			<referrer name="OnPlayerEnterCheckpoint"/>
+			<referrer name="OnPlayerLeaveCheckpoint"/>
+			<referrer name="OnPlayerEnterRaceCheckpoint"/>
+			<referrer name="OnPlayerLeaveRaceCheckpoint"/>
+			<referrer name="OnPlayerWeaponShot"/>
+			<param name="callback">
+			</param>
+			<param name="...">
+				<paraminfo> {Float,_} </paraminfo>
+			</param>
+		</member>
+		<member name="M:TextDrawColor" syntax="TextDrawColor(text, color)">
+			<attribute name="native"/>
+			<referrer name="create_smokescreen"/>
+			<param name="text">
+				<paraminfo>Text </paraminfo>
+			</param>
+			<param name="color">
+			</param>
+		</member>
+		<member name="M:TextDrawCreate" syntax="TextDrawCreate(x, y, text[])">
+			<tagname value="Text"/>
+			<attribute name="native"/>
+			<referrer name="create_smokescreen"/>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="text">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:TextDrawDestroy" syntax="TextDrawDestroy(text)">
+			<attribute name="native"/>
+			<referrer name="destroy_smokescreen"/>
+			<param name="text">
+				<paraminfo>Text </paraminfo>
+			</param>
+		</member>
+		<member name="M:TextDrawFont" syntax="TextDrawFont(text, font)">
+			<attribute name="native"/>
+			<referrer name="create_smokescreen"/>
+			<param name="text">
+				<paraminfo>Text </paraminfo>
+			</param>
+			<param name="font">
+			</param>
+		</member>
+		<member name="M:TextDrawHideForPlayer" syntax="TextDrawHideForPlayer(playerid, text)">
+			<attribute name="native"/>
+			<referrer name="hide_smokescreen"/>
+			<referrer name="hide_smoke_statistic"/>
+			<param name="playerid">
+			</param>
+			<param name="text">
+				<paraminfo>Text </paraminfo>
+			</param>
+		</member>
+		<member name="M:TextDrawShowForPlayer" syntax="TextDrawShowForPlayer(playerid, text)">
+			<attribute name="native"/>
+			<referrer name="show_smokescreen"/>
+			<referrer name="show_smoke_statistic"/>
+			<param name="playerid">
+			</param>
+			<param name="text">
+				<paraminfo>Text </paraminfo>
+			</param>
+		</member>
+		<member name="M:TextDrawTextSize" syntax="TextDrawTextSize(text, x, y)">
+			<attribute name="native"/>
+			<referrer name="create_smokescreen"/>
+			<param name="text">
+				<paraminfo>Text </paraminfo>
+			</param>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:UpdateVehicleDamageStatus" syntax="UpdateVehicleDamageStatus(vehicleid, panels, doors, lights, tires)">
+			<attribute name="native"/>
+			<referrer name="create_new_vehicle"/>
+			<referrer name="create_old_vehicle"/>
+			<param name="vehicleid">
+			</param>
+			<param name="panels">
+			</param>
+			<param name="doors">
+			</param>
+			<param name="lights">
+			</param>
+			<param name="tires">
+			</param>
+		</member>
+		<member name="M:VectorSize" syntax="VectorSize(x, y, z)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="cheater_finder"/>
+			<referrer name="load_objects"/>
+			<referrer name="set_new_objects_on_places"/>
+			<referrer name="set_objects_cells"/>
+			<referrer name="is_any_object_in_range"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="save_vehicle_state"/>
+			<referrer name="save_vehicle_position"/>
+			<referrer name="create_new_vehicle"/>
+			<referrer name="put_object_on_free_place"/>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:add_car_place" syntax="add_car_place(playerid)">
+			<attribute name="public"/>
+			<stacksize value="144"/>
+			<dependency name="GetPlayerPos"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="mysql_store_result"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:add_dot_place" syntax="add_dot_place(playerid, type)">
+			<attribute name="public"/>
+			<stacksize value="144"/>
+			<dependency name="GetPlayerPos"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="mysql_store_result"/>
+			<param name="playerid">
+			</param>
+			<param name="type">
+			</param>
+		</member>
+		<member name="M:add_objects_to_gm" syntax="add_objects_to_gm(type, dup)">
+			<attribute name="public"/>
+			<stacksize value="137"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="type">
+			</param>
+			<param name="dup">
+			</param>
+		</member>
+		<member name="M:add_spawn_place" syntax="add_spawn_place(playerid)">
+			<attribute name="public"/>
+			<stacksize value="142"/>
+			<dependency name="GetPlayerFacingAngle"/>
+			<dependency name="GetPlayerPos"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:cache_delete" syntax="cache_delete(cache_id, connectionHandle)">
+			<attribute name="native"/>
+			<referrer name="player_login"/>
+			<referrer name="set_player_id"/>
+			<referrer name="initialize_players"/>
+			<referrer name="load_objects"/>
+			<referrer name="set_new_objects_on_places"/>
+			<referrer name="destroy_objects"/>
+			<referrer name="set_objects_cells"/>
+			<referrer name="is_any_object_in_range"/>
+			<referrer name="set_character_inventory_cell"/>
+			<referrer name="set_vehicle_inventory_cell"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="take_vehicle_inventory_cell"/>
+			<referrer name="move_character_inventory_cell"/>
+			<referrer name="get_inventory_properties_cell"/>
+			<referrer name="get_vehicle_properties_cell"/>
+			<referrer name="get_objects_properties"/>
+			<referrer name="get_vehicle_objects_properties"/>
+			<referrer name="get_inventory_properties"/>
+			<referrer name="get_object_data"/>
+			<referrer name="give_character_weapon"/>
+			<referrer name="save_character_ammo"/>
+			<referrer name="save_vehicle_state"/>
+			<referrer name="save_vehicle_position"/>
+			<referrer name="create_new_vehicle"/>
+			<referrer name="create_old_vehicle"/>
+			<referrer name="set_object_owner"/>
+			<referrer name="get_unused_object"/>
+			<referrer name="disassemble_cell_object"/>
+			<referrer name="disassemble_inventory_object"/>
+			<referrer name="clear_all_owners"/>
+			<referrer name="full_free_object_from_owner"/>
+			<referrer name="put_object_on_free_place"/>
+			<referrer name="get_character_value"/>
+			<referrer name="get_vehicle_value"/>
+			<referrer name="get_thing_field"/>
+			<referrer name="get_character_state"/>
+			<referrer name="get_character_killer_name"/>
+			<referrer name="load_player_position"/>
+			<referrer name="load_player_inventory"/>
+			<referrer name="load_vehicle_inventory"/>
+			<referrer name="add_dot_place"/>
+			<referrer name="upd_dot_place"/>
+			<referrer name="add_car_place"/>
+			<referrer name="go_to_thing_place"/>
+			<referrer name="get_spawn_place"/>
+			<param name="cache_id">
+				<paraminfo>Cache </paraminfo>
+			</param>
+			<param name="connectionHandle">
+			</param>
+		</member>
+		<member name="M:cache_get_data" syntax="cache_get_data(&amp;num_rows, &amp;num_fields, connectionHandle)">
+			<attribute name="native"/>
+			<referrer name="player_login"/>
+			<referrer name="set_player_id"/>
+			<referrer name="load_objects"/>
+			<referrer name="set_new_objects_on_places"/>
+			<referrer name="destroy_objects"/>
+			<referrer name="set_objects_cells"/>
+			<referrer name="is_any_object_in_range"/>
+			<referrer name="set_character_inventory_cell"/>
+			<referrer name="set_vehicle_inventory_cell"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="take_vehicle_inventory_cell"/>
+			<referrer name="get_inventory_properties_cell"/>
+			<referrer name="get_vehicle_properties_cell"/>
+			<referrer name="get_objects_properties"/>
+			<referrer name="get_vehicle_objects_properties"/>
+			<referrer name="get_inventory_properties"/>
+			<referrer name="get_object_data"/>
+			<referrer name="give_character_weapon"/>
+			<referrer name="save_character_ammo"/>
+			<referrer name="save_vehicle_state"/>
+			<referrer name="create_new_vehicle"/>
+			<referrer name="create_old_vehicle"/>
+			<referrer name="set_object_owner"/>
+			<referrer name="get_unused_object"/>
+			<referrer name="disassemble_cell_object"/>
+			<referrer name="disassemble_inventory_object"/>
+			<referrer name="clear_all_owners"/>
+			<referrer name="full_free_object_from_owner"/>
+			<referrer name="put_object_on_free_place"/>
+			<referrer name="get_thing_field"/>
+			<referrer name="get_character_state"/>
+			<referrer name="get_character_killer_name"/>
+			<referrer name="load_player_position"/>
+			<referrer name="load_player_inventory"/>
+			<referrer name="load_vehicle_inventory"/>
+			<referrer name="add_dot_place"/>
+			<referrer name="upd_dot_place"/>
+			<referrer name="add_car_place"/>
+			<referrer name="go_to_thing_place"/>
+			<referrer name="get_spawn_place"/>
+			<param name="num_rows">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+			<param name="num_fields">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+			<param name="connectionHandle">
+			</param>
+		</member>
+		<member name="M:cache_get_field_content" syntax="cache_get_field_content(row, field_name[], destination[], connectionHandle, max_len)">
+			<attribute name="native"/>
+			<referrer name="mysql_fetch_field_row"/>
+			<referrer name="player_login"/>
+			<referrer name="get_object_data"/>
+			<referrer name="disassemble_cell_object"/>
+			<referrer name="get_thing_field"/>
+			<referrer name="get_character_killer_name"/>
+			<param name="row">
+			</param>
+			<param name="field_name">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="destination">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="connectionHandle">
+			</param>
+			<param name="max_len">
+			</param>
+		</member>
+		<member name="M:cache_get_field_content_float" syntax="cache_get_field_content_float(row, field_name[], connectionHandle)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="load_objects"/>
+			<referrer name="set_new_objects_on_places"/>
+			<referrer name="set_objects_cells"/>
+			<referrer name="is_any_object_in_range"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="get_inventory_properties_cell"/>
+			<referrer name="get_vehicle_properties_cell"/>
+			<referrer name="get_objects_properties"/>
+			<referrer name="get_vehicle_objects_properties"/>
+			<referrer name="get_inventory_properties"/>
+			<referrer name="put_object_on_free_place"/>
+			<referrer name="load_player_position"/>
+			<referrer name="go_to_thing_place"/>
+			<referrer name="get_spawn_place"/>
+			<param name="row">
+			</param>
+			<param name="field_name">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="connectionHandle">
+			</param>
+		</member>
+		<member name="M:cache_get_field_content_int" syntax="cache_get_field_content_int(row, field_name[], connectionHandle)">
+			<attribute name="native"/>
+			<referrer name="set_player_id"/>
+			<referrer name="load_objects"/>
+			<referrer name="set_new_objects_on_places"/>
+			<referrer name="destroy_objects"/>
+			<referrer name="set_objects_cells"/>
+			<referrer name="set_character_inventory_cell"/>
+			<referrer name="set_vehicle_inventory_cell"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="take_vehicle_inventory_cell"/>
+			<referrer name="get_inventory_properties_cell"/>
+			<referrer name="get_vehicle_properties_cell"/>
+			<referrer name="get_objects_properties"/>
+			<referrer name="get_vehicle_objects_properties"/>
+			<referrer name="get_inventory_properties"/>
+			<referrer name="get_object_data"/>
+			<referrer name="give_character_weapon"/>
+			<referrer name="save_character_ammo"/>
+			<referrer name="save_vehicle_state"/>
+			<referrer name="create_new_vehicle"/>
+			<referrer name="create_old_vehicle"/>
+			<referrer name="set_object_owner"/>
+			<referrer name="get_unused_object"/>
+			<referrer name="disassemble_cell_object"/>
+			<referrer name="disassemble_inventory_object"/>
+			<referrer name="clear_all_owners"/>
+			<referrer name="full_free_object_from_owner"/>
+			<referrer name="put_object_on_free_place"/>
+			<referrer name="get_character_state"/>
+			<referrer name="load_player_inventory"/>
+			<referrer name="load_vehicle_inventory"/>
+			<referrer name="add_dot_place"/>
+			<referrer name="upd_dot_place"/>
+			<referrer name="add_car_place"/>
+			<referrer name="get_spawn_place"/>
+			<param name="row">
+			</param>
+			<param name="field_name">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="connectionHandle">
+			</param>
+		</member>
+		<member name="M:cache_get_field_count" syntax="cache_get_field_count(connectionHandle)">
+			<attribute name="native"/>
+			<referrer name="mysql_num_fields"/>
+			<referrer name="mysql_fetch_row_format"/>
+			<param name="connectionHandle">
+			</param>
+		</member>
+		<member name="M:cache_get_field_name" syntax="cache_get_field_name(field_index, destination[], connectionHandle, max_len)">
+			<attribute name="native"/>
+			<referrer name="mysql_fetch_field"/>
+			<param name="field_index">
+			</param>
+			<param name="destination">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="connectionHandle">
+			</param>
+			<param name="max_len">
+			</param>
+		</member>
+		<member name="M:cache_get_row" syntax="cache_get_row(row, field_idx, destination[], connectionHandle, max_len)">
+			<attribute name="native"/>
+			<referrer name="mysql_fetch_row_format"/>
+			<param name="row">
+			</param>
+			<param name="field_idx">
+			</param>
+			<param name="destination">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="connectionHandle">
+			</param>
+			<param name="max_len">
+			</param>
+		</member>
+		<member name="M:cache_get_row_count" syntax="cache_get_row_count(connectionHandle)">
+			<attribute name="native"/>
+			<referrer name="mysql_num_rows"/>
+			<referrer name="mysql_retrieve_row"/>
+			<referrer name="mysql_data_seek"/>
+			<param name="connectionHandle">
+			</param>
+		</member>
+		<member name="M:cache_is_valid" syntax="cache_is_valid(cache_id, connectionHandle)">
+			<attribute name="native"/>
+			<referrer name="player_login"/>
+			<referrer name="set_player_id"/>
+			<referrer name="initialize_players"/>
+			<referrer name="load_objects"/>
+			<referrer name="set_new_objects_on_places"/>
+			<referrer name="destroy_objects"/>
+			<referrer name="set_objects_cells"/>
+			<referrer name="is_any_object_in_range"/>
+			<referrer name="set_character_inventory_cell"/>
+			<referrer name="set_vehicle_inventory_cell"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="take_vehicle_inventory_cell"/>
+			<referrer name="move_character_inventory_cell"/>
+			<referrer name="get_inventory_properties_cell"/>
+			<referrer name="get_vehicle_properties_cell"/>
+			<referrer name="get_objects_properties"/>
+			<referrer name="get_vehicle_objects_properties"/>
+			<referrer name="get_inventory_properties"/>
+			<referrer name="get_object_data"/>
+			<referrer name="give_character_weapon"/>
+			<referrer name="save_character_ammo"/>
+			<referrer name="save_vehicle_state"/>
+			<referrer name="save_vehicle_position"/>
+			<referrer name="create_new_vehicle"/>
+			<referrer name="create_old_vehicle"/>
+			<referrer name="set_object_owner"/>
+			<referrer name="get_unused_object"/>
+			<referrer name="disassemble_cell_object"/>
+			<referrer name="disassemble_inventory_object"/>
+			<referrer name="clear_all_owners"/>
+			<referrer name="full_free_object_from_owner"/>
+			<referrer name="put_object_on_free_place"/>
+			<referrer name="get_character_value"/>
+			<referrer name="get_vehicle_value"/>
+			<referrer name="get_thing_field"/>
+			<referrer name="get_character_state"/>
+			<referrer name="get_character_killer_name"/>
+			<referrer name="load_player_position"/>
+			<referrer name="load_player_inventory"/>
+			<referrer name="load_vehicle_inventory"/>
+			<referrer name="add_dot_place"/>
+			<referrer name="upd_dot_place"/>
+			<referrer name="add_car_place"/>
+			<referrer name="go_to_thing_place"/>
+			<referrer name="get_spawn_place"/>
+			<param name="cache_id">
+				<paraminfo>Cache </paraminfo>
+			</param>
+			<param name="connectionHandle">
+			</param>
+		</member>
+		<member name="M:cache_save" syntax="cache_save(connectionHandle)">
+			<tagname value="Cache"/>
+			<attribute name="native"/>
+			<referrer name="load_objects"/>
+			<referrer name="set_new_objects_on_places"/>
+			<referrer name="destroy_objects"/>
+			<referrer name="save_character_ammo"/>
+			<referrer name="disassemble_cell_object"/>
+			<referrer name="clear_all_owners"/>
+			<param name="connectionHandle">
+			</param>
+		</member>
+		<member name="M:cache_set_active" syntax="cache_set_active(cache_id, connectionHandle)">
+			<attribute name="native"/>
+			<referrer name="load_objects"/>
+			<referrer name="set_new_objects_on_places"/>
+			<referrer name="destroy_objects"/>
+			<referrer name="save_character_ammo"/>
+			<referrer name="disassemble_cell_object"/>
+			<referrer name="clear_all_owners"/>
+			<param name="cache_id">
+				<paraminfo>Cache </paraminfo>
+			</param>
+			<param name="connectionHandle">
+			</param>
+		</member>
+		<member name="M:cheater_finder" syntax="cheater_finder()">
+			<attribute name="public"/>
+			<stacksize value="204"/>
+			<dependency name="operator-(Float:,Float:)"/>
+			<dependency name="operator==(Float:,Float:)"/>
+			<dependency name="operator&gt;(Float:,Float:)"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="GetPlayerPos"/>
+			<dependency name="IsPlayerAdmin"/>
+			<dependency name="IsPlayerSpawned"/>
+			<dependency name="SendClientMessageToAll"/>
+			<dependency name="VectorSize"/>
+			<dependency name="float"/>
+			<dependency name="floatmul"/>
+			<dependency name="format"/>
+			<dependency name="gNonCheaters"/>
+			<dependency name="gNonCheaters"/>
+			<dependency name="gPlayersID"/>
+		</member>
+		<member name="M:clear_all_owners" syntax="clear_all_owners(object_id)">
+			<attribute name="public"/>
+			<stacksize value="291"/>
+			<referrer name="load_objects"/>
+			<referrer name="full_free_object_from_owner"/>
+			<referrer name="free_object_from_owner"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="cache_save"/>
+			<dependency name="cache_set_active"/>
+			<dependency name="format"/>
+			<dependency name="gInv"/>
+			<dependency name="gInv"/>
+			<dependency name="gInvThing"/>
+			<dependency name="gInvThing"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="strdel"/>
+			<param name="object_id">
+			</param>
+		</member>
+		<member name="M:close_database" syntax="close_database()">
+			<attribute name="public"/>
+			<stacksize value="3"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_close"/>
+		</member>
+		<member name="M:composit_thing" syntax="composit_thing(request[], &amp;out_main_thing_id)">
+			<attribute name="native"/>
+			<referrer name="load_objects"/>
+			<referrer name="set_new_objects_on_places"/>
+			<referrer name="create_composite_object"/>
+			<param name="request">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="out_main_thing_id">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+		</member>
+		<member name="M:create_composite_object" syntax="create_composite_object(playerid, &amp;cell)">
+			<attribute name="public"/>
+			<stacksize value="282"/>
+			<dependency name="composit_thing"/>
+			<dependency name="create_resident_object"/>
+			<dependency name="format"/>
+			<dependency name="gInvThing"/>
+			<dependency name="gInvThing"/>
+			<dependency name="gPlayerWeapon"/>
+			<dependency name="gRotate"/>
+			<dependency name="get_unused_object"/>
+			<dependency name="load_player_inventory"/>
+			<dependency name="print"/>
+			<dependency name="save_character_ammo"/>
+			<dependency name="set_character_inventory_cell"/>
+			<dependency name="set_object_owner"/>
+			<dependency name="strcat"/>
+			<dependency name="strdel"/>
+			<dependency name="strlen"/>
+			<param name="playerid">
+			</param>
+			<param name="cell">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+		</member>
+		<member name="M:create_new_vehicle" syntax="create_new_vehicle(object_id, x, y, z, rotz, inworld_id, def_value)">
+			<attribute name="public"/>
+			<stacksize value="493"/>
+			<referrer name="load_objects"/>
+			<referrer name="set_new_objects_on_places"/>
+			<referrer name="put_object_on_free_place"/>
+			<dependency name="CreateVehicle"/>
+			<dependency name="SetVehicleParamsEx"/>
+			<dependency name="UpdateVehicleDamageStatus"/>
+			<dependency name="VectorSize"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVehMod"/>
+			<dependency name="gVehMod"/>
+			<dependency name="gVehObj"/>
+			<dependency name="gVehObj"/>
+			<dependency name="load_vehicle_inventory"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="object_id">
+			</param>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="rotz">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="inworld_id">
+			</param>
+			<param name="def_value">
+			</param>
+		</member>
+		<member name="M:create_old_vehicle" syntax="create_old_vehicle(object_id, x, y, z, rotz, inworld_id)">
+			<attribute name="public"/>
+			<stacksize value="563"/>
+			<referrer name="load_objects"/>
+			<dependency name="CreateVehicle"/>
+			<dependency name="SetVehicleParamsEx"/>
+			<dependency name="UpdateVehicleDamageStatus"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVehMod"/>
+			<dependency name="gVehMod"/>
+			<dependency name="gVehObj"/>
+			<dependency name="gVehObj"/>
+			<dependency name="load_vehicle_inventory"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="object_id">
+			</param>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="rotz">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="inworld_id">
+			</param>
+		</member>
+		<member name="M:create_player" syntax="create_player(playerid, password[])">
+			<attribute name="public"/>
+			<stacksize value="566"/>
+			<referrer name="player_login"/>
+			<dependency name="GetPlayerIp"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="get_spawn_place"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="set_player_id"/>
+			<param name="playerid">
+			</param>
+			<param name="password">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:create_resident_object" syntax="create_resident_object(object_id, old_thing_id, new_thing_id)">
+			<attribute name="public"/>
+			<stacksize value="266"/>
+			<referrer name="create_composite_object"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="object_id">
+			</param>
+			<param name="old_thing_id">
+			</param>
+			<param name="new_thing_id">
+			</param>
+		</member>
+		<member name="M:create_sensors" syntax="create_sensors(playerid)">
+			<attribute name="public"/>
+			<stacksize value="7"/>
+			<dependency name="operator+(Float:,_:)"/>
+			<dependency name="Float:operator=(_:)"/>
+			<dependency name="CreatePlayerTextDraw"/>
+			<dependency name="PlayerTextDrawFont"/>
+			<dependency name="PlayerTextDrawShow"/>
+			<dependency name="PlayerTextDrawTextSize"/>
+			<dependency name="SetPlayerScore"/>
+			<dependency name="gHealth"/>
+			<dependency name="gHunger"/>
+			<dependency name="gScores"/>
+			<dependency name="gThirst"/>
+			<dependency name="gWound"/>
+			<dependency name="get_character_health"/>
+			<dependency name="get_character_hunger"/>
+			<dependency name="get_character_scores"/>
+			<dependency name="get_character_thirst"/>
+			<dependency name="get_character_wound"/>
+			<dependency name="sensors"/>
+			<dependency name="sensors"/>
+			<dependency name="update_sensor_health"/>
+			<dependency name="update_sensor_hunger"/>
+			<dependency name="update_sensor_thirst"/>
+			<dependency name="update_sensor_wound"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:create_smokescreen" syntax="create_smokescreen()">
+			<attribute name="public"/>
+			<stacksize value="6"/>
+			<dependency name="GangZoneCreate"/>
+			<dependency name="GangZoneShowForAll"/>
+			<dependency name="TextDrawColor"/>
+			<dependency name="TextDrawCreate"/>
+			<dependency name="TextDrawFont"/>
+			<dependency name="TextDrawTextSize"/>
+			<dependency name="gHideMapZone"/>
+			<dependency name="smokescreen"/>
+		</member>
+		<member name="M:create_statistic_data" syntax="create_statistic_data(playerid)">
+			<attribute name="public"/>
+			<stacksize value="70"/>
+			<dependency name="CreatePlayerTextDraw"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="PlayerTextDrawAlignment"/>
+			<dependency name="PlayerTextDrawColor"/>
+			<dependency name="PlayerTextDrawFont"/>
+			<dependency name="format"/>
+			<dependency name="gHealth"/>
+			<dependency name="gScores"/>
+			<dependency name="gStatisticData"/>
+			<dependency name="gStatisticData"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:create_vehicle_sensors" syntax="create_vehicle_sensors(playerid, vehicleid)">
+			<attribute name="public"/>
+			<stacksize value="9"/>
+			<dependency name="operator-(Float:,Float:)"/>
+			<dependency name="operator+(Float:,Float:)"/>
+			<dependency name="operator/(Float:,Float:)"/>
+			<dependency name="operator*(Float:,Float:)"/>
+			<dependency name="operator&lt;(Float:,Float:)"/>
+			<dependency name="CreatePlayerTextDraw"/>
+			<dependency name="PlayerTextDrawBackgroundColor"/>
+			<dependency name="PlayerTextDrawBoxColor"/>
+			<dependency name="PlayerTextDrawColor"/>
+			<dependency name="PlayerTextDrawLetterSize"/>
+			<dependency name="PlayerTextDrawSetShadow"/>
+			<dependency name="PlayerTextDrawShow"/>
+			<dependency name="PlayerTextDrawTextSize"/>
+			<dependency name="PlayerTextDrawUseBox"/>
+			<dependency name="destroy_vehicle_sensors"/>
+			<dependency name="gTdDataVehicle"/>
+			<dependency name="gTdDataVehicle"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVehicleDataShow"/>
+			<param name="playerid">
+			</param>
+			<param name="vehicleid">
+			</param>
+		</member>
+		<member name="M:destroy_objects" syntax="destroy_objects()">
+			<attribute name="public"/>
+			<stacksize value="270"/>
+			<dependency name="DestroyDynamicObject"/>
+			<dependency name="DestroyVehicle"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="cache_save"/>
+			<dependency name="cache_set_active"/>
+			<dependency name="gMysql"/>
+			<dependency name="gVeh"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="save_vehicle_state"/>
+		</member>
+		<member name="M:destroy_sensors" syntax="destroy_sensors(playerid)">
+			<attribute name="public"/>
+			<stacksize value="5"/>
+			<referrer name="kill_character"/>
+			<dependency name="PlayerTextDrawDestroy"/>
+			<dependency name="sensors"/>
+			<dependency name="sensors"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:destroy_smokescreen" syntax="destroy_smokescreen()">
+			<attribute name="public"/>
+			<stacksize value="3"/>
+			<dependency name="GangZoneDestroy"/>
+			<dependency name="TextDrawDestroy"/>
+			<dependency name="gHideMapZone"/>
+			<dependency name="smokescreen"/>
+		</member>
+		<member name="M:destroy_statistic_data" syntax="destroy_statistic_data(playerid)">
+			<attribute name="public"/>
+			<stacksize value="5"/>
+			<dependency name="PlayerTextDrawDestroy"/>
+			<dependency name="gStatisticData"/>
+			<dependency name="gStatisticData"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:destroy_vehicle_sensors" syntax="destroy_vehicle_sensors(playerid)">
+			<attribute name="public"/>
+			<stacksize value="5"/>
+			<referrer name="create_vehicle_sensors"/>
+			<referrer name="update_vehicle_sensors"/>
+			<dependency name="PlayerTextDrawDestroy"/>
+			<dependency name="gTdDataVehicle"/>
+			<dependency name="gTdDataVehicle"/>
+			<dependency name="gVehicleDataShow"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:disassemble_cell_object" syntax="disassemble_cell_object(playerid, cell)">
+			<attribute name="public"/>
+			<stacksize value="371"/>
+			<referrer name="disassemble_inventory_object"/>
+			<dependency name="ResetPlayerWeapons"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="cache_save"/>
+			<dependency name="cache_set_active"/>
+			<dependency name="disassemble_resident_object"/>
+			<dependency name="format"/>
+			<dependency name="gInv"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayerWeapon"/>
+			<dependency name="gPlayerWeapon"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="get_character_value"/>
+			<dependency name="is_composit"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="print"/>
+			<dependency name="save_character_ammo"/>
+			<dependency name="set_character_inventory_cell"/>
+			<dependency name="strdel"/>
+			<dependency name="strval"/>
+			<param name="playerid">
+			</param>
+			<param name="cell">
+			</param>
+		</member>
+		<member name="M:disassemble_inventory_object" syntax="disassemble_inventory_object(object_id)">
+			<attribute name="public"/>
+			<stacksize value="276"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="disassemble_cell_object"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="load_player_inventory"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="object_id">
+			</param>
+		</member>
+		<member name="M:disassemble_resident_object" syntax="disassemble_resident_object(object_id, prev_id)">
+			<attribute name="public"/>
+			<stacksize value="265"/>
+			<referrer name="disassemble_cell_object"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="object_id">
+			</param>
+			<param name="prev_id">
+			</param>
+		</member>
+		<member name="M:drop_character_inventory_cell" syntax="drop_character_inventory_cell(playerid, cell, obj_cell)">
+			<attribute name="public"/>
+			<stacksize value="489"/>
+			<dependency name="operator+(Float:,Float:)"/>
+			<dependency name="operator&gt;(Float:,Float:)"/>
+			<dependency name="CreateDynamicObject"/>
+			<dependency name="GetPlayerFacingAngle"/>
+			<dependency name="GetPlayerPos"/>
+			<dependency name="MapAndreas_Valid_Z_Coordinate"/>
+			<dependency name="ResetPlayerWeapons"/>
+			<dependency name="SetPlayerPos"/>
+			<dependency name="VectorSize"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_float"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="false"/>
+			<dependency name="floatadd"/>
+			<dependency name="floatcos"/>
+			<dependency name="floatdiv"/>
+			<dependency name="floatmul"/>
+			<dependency name="floatsin"/>
+			<dependency name="floatsub"/>
+			<dependency name="gInv"/>
+			<dependency name="gInv"/>
+			<dependency name="gInvThing"/>
+			<dependency name="gInvThing"/>
+			<dependency name="gMysql"/>
+			<dependency name="gObj"/>
+			<dependency name="gObj"/>
+			<dependency name="gObjThing"/>
+			<dependency name="gObjThing"/>
+			<dependency name="gPlayerWeapon"/>
+			<dependency name="gPlayerWeapon"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="is_any_object_in_range"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="save_character_ammo"/>
+			<dependency name="true"/>
+			<param name="playerid">
+			</param>
+			<param name="cell">
+			</param>
+			<param name="obj_cell">
+			</param>
+		</member>
+		<member name="M:drop_vehicle_from_dot" syntax="drop_vehicle_from_dot(playerid, vehicleid)">
+			<attribute name="public"/>
+			<stacksize value="530"/>
+			<dependency name="GetVehiclePos"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVeh"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="playerid">
+			</param>
+			<param name="vehicleid">
+			</param>
+		</member>
+		<member name="M:float" syntax="float(value)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="operator*(Float:,_:)"/>
+			<referrer name="operator/(Float:,_:)"/>
+			<referrer name="operator/(_:,Float:)"/>
+			<referrer name="operator+(Float:,_:)"/>
+			<referrer name="operator-(Float:,_:)"/>
+			<referrer name="operator-(_:,Float:)"/>
+			<referrer name="operator==(Float:,_:)"/>
+			<referrer name="operator!=(Float:,_:)"/>
+			<referrer name="operator&gt;(Float:,_:)"/>
+			<referrer name="operator&gt;(_:,Float:)"/>
+			<referrer name="operator&gt;=(Float:,_:)"/>
+			<referrer name="operator&gt;=(_:,Float:)"/>
+			<referrer name="operator&lt;(Float:,_:)"/>
+			<referrer name="operator&lt;(_:,Float:)"/>
+			<referrer name="operator&lt;=(Float:,_:)"/>
+			<referrer name="operator&lt;=(_:,Float:)"/>
+			<referrer name="cheater_finder"/>
+			<param name="value">
+			</param>
+		</member>
+		<member name="M:floatadd" syntax="floatadd(oper1, oper2)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="operator+(Float:,_:)"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:floatcmp" syntax="floatcmp(oper1, oper2)">
+			<attribute name="native"/>
+			<referrer name="operator==(Float:,Float:)"/>
+			<referrer name="operator==(Float:,_:)"/>
+			<referrer name="operator!=(Float:,Float:)"/>
+			<referrer name="operator!=(Float:,_:)"/>
+			<referrer name="operator&gt;(Float:,Float:)"/>
+			<referrer name="operator&gt;(Float:,_:)"/>
+			<referrer name="operator&gt;(_:,Float:)"/>
+			<referrer name="operator&gt;=(Float:,Float:)"/>
+			<referrer name="operator&gt;=(Float:,_:)"/>
+			<referrer name="operator&gt;=(_:,Float:)"/>
+			<referrer name="operator&lt;(Float:,Float:)"/>
+			<referrer name="operator&lt;(Float:,_:)"/>
+			<referrer name="operator&lt;(_:,Float:)"/>
+			<referrer name="operator&lt;=(Float:,Float:)"/>
+			<referrer name="operator&lt;=(Float:,_:)"/>
+			<referrer name="operator&lt;=(_:,Float:)"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:floatcos" syntax="floatcos(value, mode)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<param name="value">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="mode">
+				<paraminfo>anglemode </paraminfo>
+			</param>
+		</member>
+		<member name="M:floatdiv" syntax="floatdiv(dividend, divisor)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="operator/(Float:,_:)"/>
+			<referrer name="operator/(_:,Float:)"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<param name="dividend">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="divisor">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:floatmul" syntax="floatmul(oper1, oper2)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="operator*(Float:,_:)"/>
+			<referrer name="cheater_finder"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:floatsin" syntax="floatsin(value, mode)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<param name="value">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="mode">
+				<paraminfo>anglemode </paraminfo>
+			</param>
+		</member>
+		<member name="M:floatsub" syntax="floatsub(oper1, oper2)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="operator-(Float:,_:)"/>
+			<referrer name="operator-(_:,Float:)"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:format" syntax="format(output[], len, format[], ...)">
+			<attribute name="native"/>
+			<referrer name="cheater_finder"/>
+			<referrer name="create_statistic_data"/>
+			<referrer name="update_statistic_data"/>
+			<referrer name="get_inventory_properties_cell"/>
+			<referrer name="get_vehicle_properties_cell"/>
+			<referrer name="get_inventory_properties"/>
+			<referrer name="create_composite_object"/>
+			<referrer name="disassemble_cell_object"/>
+			<referrer name="clear_all_owners"/>
+			<referrer name="get_character_killer_name"/>
+			<referrer name="load_vehicle_inventory"/>
+			<param name="output">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="len">
+			</param>
+			<param name="format">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="...">
+				<paraminfo> {Float,_} </paraminfo>
+			</param>
+		</member>
+		<member name="M:free_cell_from_owner" syntax="free_cell_from_owner(playerid, cell)">
+			<attribute name="public"/>
+			<stacksize value="11"/>
+			<dependency name="free_object_from_owner"/>
+			<dependency name="load_player_inventory"/>
+			<param name="playerid">
+			</param>
+			<param name="cell">
+			</param>
+		</member>
+		<member name="M:free_object_from_owner" syntax="free_object_from_owner(object_id)">
+			<attribute name="public"/>
+			<stacksize value="4"/>
+			<referrer name="save_character_ammo"/>
+			<referrer name="save_vehicle_state"/>
+			<referrer name="free_cell_from_owner"/>
+			<dependency name="clear_all_owners"/>
+			<dependency name="put_object_on_free_place"/>
+			<param name="object_id">
+			</param>
+		</member>
+		<member name="M:free_players" syntax="free_players()">
+			<attribute name="public"/>
+			<stacksize value="5"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="save_player_position"/>
+		</member>
+		<member name="M:full_free_object_from_owner" syntax="full_free_object_from_owner(object_id)">
+			<attribute name="public"/>
+			<stacksize value="524"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="clear_all_owners"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="put_object_on_free_place"/>
+			<param name="object_id">
+			</param>
+		</member>
+		<member name="M:get_character_health" syntax="get_character_health(playerid)">
+			<attribute name="public"/>
+			<stacksize value="71"/>
+			<referrer name="create_sensors"/>
+			<dependency name="get_character_value"/>
+			<dependency name="strdel"/>
+			<dependency name="strval"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:get_character_hunger" syntax="get_character_hunger(playerid)">
+			<attribute name="public"/>
+			<stacksize value="71"/>
+			<referrer name="create_sensors"/>
+			<dependency name="get_character_value"/>
+			<dependency name="strdel"/>
+			<dependency name="strval"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:get_character_killer_name" syntax="get_character_killer_name(playerid, name[])">
+			<attribute name="public"/>
+			<stacksize value="138"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="format"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="playerid">
+			</param>
+			<param name="name">
+				<paraminfo> [64] </paraminfo>
+			</param>
+		</member>
+		<member name="M:get_character_scores" syntax="get_character_scores(playerid)">
+			<attribute name="public"/>
+			<stacksize value="71"/>
+			<referrer name="create_sensors"/>
+			<dependency name="get_character_value"/>
+			<dependency name="strdel"/>
+			<dependency name="strval"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:get_character_state" syntax="get_character_state(playerid, &amp;health, &amp;hunger, &amp;thirst, &amp;wound)">
+			<attribute name="public"/>
+			<stacksize value="522"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="playerid">
+			</param>
+			<param name="health">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+			<param name="hunger">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+			<param name="thirst">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+			<param name="wound">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+		</member>
+		<member name="M:get_character_thirst" syntax="get_character_thirst(playerid)">
+			<attribute name="public"/>
+			<stacksize value="71"/>
+			<referrer name="create_sensors"/>
+			<dependency name="get_character_value"/>
+			<dependency name="strdel"/>
+			<dependency name="strval"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:get_character_value" syntax="get_character_value(playerid, row_name[], table_name[], result[])">
+			<attribute name="public"/>
+			<stacksize value="139"/>
+			<referrer name="disassemble_cell_object"/>
+			<referrer name="get_character_health"/>
+			<referrer name="get_character_hunger"/>
+			<referrer name="get_character_thirst"/>
+			<referrer name="get_character_wound"/>
+			<referrer name="get_character_scores"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_fetch_field_row"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_free_result"/>
+			<dependency name="mysql_num_rows"/>
+			<dependency name="mysql_query"/>
+			<dependency name="mysql_retrieve_row"/>
+			<dependency name="mysql_store_result"/>
+			<dependency name="strcmp"/>
+			<dependency name="true"/>
+			<param name="playerid">
+			</param>
+			<param name="row_name">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="table_name">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="result">
+				<paraminfo> [64] </paraminfo>
+			</param>
+		</member>
+		<member name="M:get_character_wound" syntax="get_character_wound(playerid)">
+			<attribute name="public"/>
+			<stacksize value="71"/>
+			<referrer name="create_sensors"/>
+			<dependency name="get_character_value"/>
+			<dependency name="strdel"/>
+			<dependency name="strval"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:get_inventory_properties" syntax="get_inventory_properties(playerid, inv_isrot[][], inv_deg[][], inv_zoom[], is_auto[])">
+			<attribute name="public"/>
+			<stacksize value="544"/>
+			<dependency name="DestroyDynamicObject"/>
+			<dependency name="IsValidDynamicObject"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_float"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="format"/>
+			<dependency name="gInv"/>
+			<dependency name="gInv"/>
+			<dependency name="gInvThing"/>
+			<dependency name="gInvThing"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="set_character_inventory_cell"/>
+			<param name="playerid">
+			</param>
+			<param name="inv_isrot">
+				<paraminfo> [6][3] </paraminfo>
+			</param>
+			<param name="inv_deg">
+				<paraminfo>Float [6][3] </paraminfo>
+			</param>
+			<param name="inv_zoom">
+				<paraminfo>Float [6] </paraminfo>
+			</param>
+			<param name="is_auto">
+				<paraminfo> [6] </paraminfo>
+			</param>
+		</member>
+		<member name="M:get_inventory_properties_cell" syntax="get_inventory_properties_cell(playerid, cell, inv_isrot[], inv_deg[], &amp;inv_zoom, &amp;is_auto)">
+			<attribute name="public"/>
+			<stacksize value="413"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_float"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="format"/>
+			<dependency name="gInv"/>
+			<dependency name="gInv"/>
+			<dependency name="gInvThing"/>
+			<dependency name="gInvThing"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="set_character_inventory_cell"/>
+			<param name="playerid">
+			</param>
+			<param name="cell">
+			</param>
+			<param name="inv_isrot">
+				<paraminfo> [3] </paraminfo>
+			</param>
+			<param name="inv_deg">
+				<paraminfo>Float [3] </paraminfo>
+			</param>
+			<param name="inv_zoom">
+				<paraminfo>Float &amp; </paraminfo>
+			</param>
+			<param name="is_auto">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+		</member>
+		<member name="M:get_object_data" syntax="get_object_data(playerid, cell, area, name[], &amp;value)">
+			<attribute name="public"/>
+			<stacksize value="268"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="gObjThing"/>
+			<dependency name="gObjThing"/>
+			<dependency name="gObjectsMenuShow"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVehicleMenuShow"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="strdel"/>
+			<param name="playerid">
+			</param>
+			<param name="cell">
+			</param>
+			<param name="area">
+			</param>
+			<param name="name">
+				<paraminfo> [128] </paraminfo>
+			</param>
+			<param name="value">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+		</member>
+		<member name="M:get_objects_properties" syntax="get_objects_properties(playerid, inv_isrot[][], inv_deg[][], inv_zoom[], range)">
+			<attribute name="public"/>
+			<stacksize value="527"/>
+			<dependency name="DestroyDynamicObject"/>
+			<dependency name="IsValidDynamicObject"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_float"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="gObj"/>
+			<dependency name="gObjThing"/>
+			<dependency name="gObjThing"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="set_objects_cells"/>
+			<param name="playerid">
+			</param>
+			<param name="inv_isrot">
+				<paraminfo> [6][3] </paraminfo>
+			</param>
+			<param name="inv_deg">
+				<paraminfo>Float [6][3] </paraminfo>
+			</param>
+			<param name="inv_zoom">
+				<paraminfo>Float [6] </paraminfo>
+			</param>
+			<param name="range">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:get_spawn_place" syntax="get_spawn_place(playerid)">
+			<attribute name="public"/>
+			<stacksize value="275"/>
+			<referrer name="create_player"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_float"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="strdel"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:get_thing_field" syntax="get_thing_field(field_name[], thing[], out_data[])">
+			<attribute name="public"/>
+			<stacksize value="523"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="print"/>
+			<dependency name="printf"/>
+			<dependency name="strlen"/>
+			<param name="field_name">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="thing">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="out_data">
+				<paraminfo> [64] </paraminfo>
+			</param>
+		</member>
+		<member name="M:get_unused_object" syntax="get_unused_object(thing_id)">
+			<attribute name="public"/>
+			<stacksize value="269"/>
+			<referrer name="create_composite_object"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="thing_id">
+			</param>
+		</member>
+		<member name="M:get_vehicle_objects_properties" syntax="get_vehicle_objects_properties(vehicleid, inv_isrot[][], inv_deg[][], inv_zoom[])">
+			<attribute name="public"/>
+			<stacksize value="527"/>
+			<dependency name="DestroyDynamicObject"/>
+			<dependency name="IsValidDynamicObject"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_float"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="gVehObj"/>
+			<dependency name="gVehObj"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="print"/>
+			<dependency name="set_vehicle_cells"/>
+			<param name="vehicleid">
+			</param>
+			<param name="inv_isrot">
+				<paraminfo> [12][3] </paraminfo>
+			</param>
+			<param name="inv_deg">
+				<paraminfo>Float [12][3] </paraminfo>
+			</param>
+			<param name="inv_zoom">
+				<paraminfo>Float [12] </paraminfo>
+			</param>
+		</member>
+		<member name="M:get_vehicle_properties_cell" syntax="get_vehicle_properties_cell(vehicleid, cell, inv_isrot[], inv_deg[], &amp;inv_zoom)">
+			<attribute name="public"/>
+			<stacksize value="350"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_float"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="format"/>
+			<dependency name="gMysql"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVehMod"/>
+			<dependency name="gVehMod"/>
+			<dependency name="gVehObj"/>
+			<dependency name="gVehObj"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="set_vehicle_inventory_cell"/>
+			<param name="vehicleid">
+			</param>
+			<param name="cell">
+			</param>
+			<param name="inv_isrot">
+				<paraminfo> [3] </paraminfo>
+			</param>
+			<param name="inv_deg">
+				<paraminfo>Float [3] </paraminfo>
+			</param>
+			<param name="inv_zoom">
+				<paraminfo>Float &amp; </paraminfo>
+			</param>
+		</member>
+		<member name="M:get_vehicle_value" syntax="get_vehicle_value(vehicleid, row_name[], table_name[], result[])">
+			<attribute name="public"/>
+			<stacksize value="139"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVeh"/>
+			<dependency name="mysql_fetch_field_row"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_free_result"/>
+			<dependency name="mysql_num_rows"/>
+			<dependency name="mysql_query"/>
+			<dependency name="mysql_retrieve_row"/>
+			<dependency name="mysql_store_result"/>
+			<dependency name="strcmp"/>
+			<dependency name="true"/>
+			<param name="vehicleid">
+			</param>
+			<param name="row_name">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="table_name">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="result">
+				<paraminfo> [64] </paraminfo>
+			</param>
+		</member>
+		<member name="M:give_character_weapon" syntax="give_character_weapon(playerid, cell)">
+			<attribute name="public"/>
+			<stacksize value="143"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayerWeapon"/>
+			<dependency name="gPlayerWeapon"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="save_character_ammo"/>
+			<param name="playerid">
+			</param>
+			<param name="cell">
+			</param>
+		</member>
+		<member name="M:give_vehicle_inventory_cell" syntax="give_vehicle_inventory_cell(playerid, vehicleid, cell, veh_cell)">
+			<attribute name="public"/>
+			<stacksize value="277"/>
+			<dependency name="ResetPlayerWeapons"/>
+			<dependency name="gInv"/>
+			<dependency name="gInv"/>
+			<dependency name="gInvThing"/>
+			<dependency name="gInvThing"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayerWeapon"/>
+			<dependency name="gPlayerWeapon"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVehMod"/>
+			<dependency name="gVehMod"/>
+			<dependency name="gVehObj"/>
+			<dependency name="gVehObj"/>
+			<dependency name="load_player_inventory"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="save_character_ammo"/>
+			<param name="playerid">
+			</param>
+			<param name="vehicleid">
+			</param>
+			<param name="cell">
+			</param>
+			<param name="veh_cell">
+			</param>
+		</member>
+		<member name="M:go_to_thing_place" syntax="go_to_thing_place(playerid, thing_type[])">
+			<attribute name="public"/>
+			<stacksize value="269"/>
+			<dependency name="operator+(Float:,_:)"/>
+			<dependency name="SetPlayerPos"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_float"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="mysql_store_result"/>
+			<param name="playerid">
+			</param>
+			<param name="thing_type">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:hide_smoke_map" syntax="hide_smoke_map(playerid)">
+			<attribute name="public"/>
+			<stacksize value="4"/>
+			<dependency name="GangZoneHideForPlayer"/>
+			<dependency name="gHideMapZone"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:hide_smoke_statistic" syntax="hide_smoke_statistic(playerid)">
+			<attribute name="public"/>
+			<stacksize value="4"/>
+			<dependency name="TextDrawHideForPlayer"/>
+			<dependency name="smokescreen"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:hide_smokescreen" syntax="hide_smokescreen(playerid)">
+			<attribute name="public"/>
+			<stacksize value="4"/>
+			<dependency name="TextDrawHideForPlayer"/>
+			<dependency name="smokescreen"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:hide_statistic_data" syntax="hide_statistic_data(playerid)">
+			<attribute name="public"/>
+			<stacksize value="5"/>
+			<dependency name="PlayerTextDrawHide"/>
+			<dependency name="gStatisticData"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:initialize_players" syntax="initialize_players()">
+			<attribute name="public"/>
+			<stacksize value="194"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_fetch_field_row"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_free_result"/>
+			<dependency name="mysql_num_rows"/>
+			<dependency name="mysql_query"/>
+			<dependency name="mysql_retrieve_row"/>
+			<dependency name="mysql_store_result"/>
+			<dependency name="strdel"/>
+			<dependency name="strval"/>
+		</member>
+		<member name="M:is_any_object_in_range" syntax="is_any_object_in_range(x, y, z, range)">
+			<attribute name="public"/>
+			<stacksize value="276"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<dependency name="operator-(Float:,Float:)"/>
+			<dependency name="operator&lt;(Float:,Float:)"/>
+			<dependency name="VectorSize"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_float"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="range">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:is_composit" syntax="is_composit(object_id)">
+			<attribute name="native"/>
+			<referrer name="disassemble_cell_object"/>
+			<param name="object_id">
+			</param>
+		</member>
+		<member name="M:kill_character" syntax="kill_character(playerid)">
+			<attribute name="public"/>
+			<stacksize value="4"/>
+			<referrer name="update_sensor_health"/>
+			<referrer name="update_sensor_hunger"/>
+			<referrer name="update_sensor_thirst"/>
+			<dependency name="SetPlayerHealth"/>
+			<dependency name="destroy_sensors"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:load_objects" syntax="load_objects()">
+			<attribute name="public"/>
+			<stacksize value="1075"/>
+			<dependency name="operator+(Float:,Float:)"/>
+			<dependency name="Float:operator=(_:)"/>
+			<dependency name="operator==(Float:,_:)"/>
+			<dependency name="CreateDynamicObject"/>
+			<dependency name="MapAndreas_Valid_Z_Coordinate"/>
+			<dependency name="VectorSize"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_float"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="cache_save"/>
+			<dependency name="cache_set_active"/>
+			<dependency name="clear_all_owners"/>
+			<dependency name="composit_thing"/>
+			<dependency name="create_new_vehicle"/>
+			<dependency name="create_old_vehicle"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+		</member>
+		<member name="M:load_player_inventory" syntax="load_player_inventory(playerid, inv[])">
+			<attribute name="public"/>
+			<stacksize value="138"/>
+			<referrer name="give_vehicle_inventory_cell"/>
+			<referrer name="create_composite_object"/>
+			<referrer name="disassemble_inventory_object"/>
+			<referrer name="free_cell_from_owner"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="set_player_id"/>
+			<param name="playerid">
+			</param>
+			<param name="inv">
+				<paraminfo> [6] </paraminfo>
+			</param>
+		</member>
+		<member name="M:load_player_position" syntax="load_player_position(playerid)">
+			<attribute name="public"/>
+			<stacksize value="142"/>
+			<dependency name="operator&lt;=(Float:,_:)"/>
+			<dependency name="SetCameraBehindPlayer"/>
+			<dependency name="SetPlayerFacingAngle"/>
+			<dependency name="SetPlayerPos"/>
+			<dependency name="SetPlayerPosFindZ"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_float"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="gNonCheaters"/>
+			<dependency name="gNonCheaters"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="set_player_id"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:load_vehicle_inventory" syntax="load_vehicle_inventory(vehicleid, inv[], obj[])">
+			<attribute name="public"/>
+			<stacksize value="156"/>
+			<referrer name="set_vehicle_cells"/>
+			<referrer name="create_new_vehicle"/>
+			<referrer name="create_old_vehicle"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="format"/>
+			<dependency name="gMysql"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVeh"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="print"/>
+			<param name="vehicleid">
+			</param>
+			<param name="inv">
+				<paraminfo> [12] </paraminfo>
+			</param>
+			<param name="obj">
+				<paraminfo> [12] </paraminfo>
+			</param>
+		</member>
+		<member name="M:move_character_inventory_cell" syntax="move_character_inventory_cell(playerid, cell1, cell2)">
+			<attribute name="public"/>
+			<stacksize value="142"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gInv"/>
+			<dependency name="gInv"/>
+			<dependency name="gInvThing"/>
+			<dependency name="gInvThing"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="playerid">
+			</param>
+			<param name="cell1">
+			</param>
+			<param name="cell2">
+			</param>
+		</member>
+		<member name="M:move_vehicle_inventory_cell" syntax="move_vehicle_inventory_cell(vehicleid, cell1, cell2)">
+			<attribute name="public"/>
+			<stacksize value="141"/>
+			<dependency name="gMysql"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVehMod"/>
+			<dependency name="gVehMod"/>
+			<dependency name="gVehObj"/>
+			<dependency name="gVehObj"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="vehicleid">
+			</param>
+			<param name="cell1">
+			</param>
+			<param name="cell2">
+			</param>
+		</member>
+		<member name="M:mysql_close" syntax="mysql_close(connectionHandle)">
+			<attribute name="native"/>
+			<referrer name="close_database"/>
+			<param name="connectionHandle">
+			</param>
+		</member>
+		<member name="M:mysql_connect" syntax="mysql_connect(host[], user[], database[], password[], port, autoreconnect, pool_size)">
+			<attribute name="native"/>
+			<referrer name="open_database"/>
+			<param name="host">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="user">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="database">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="password">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="port">
+			</param>
+			<param name="autoreconnect">
+				<paraminfo>bool </paraminfo>
+			</param>
+			<param name="pool_size">
+			</param>
+		</member>
+		<member name="M:mysql_data_seek" syntax="mysql_data_seek(offset, connectionHandle)">
+			<stacksize value="4"/>
+			<dependency name="RowIndex"/>
+			<dependency name="cache_get_row_count"/>
+			<param name="offset">
+			</param>
+			<param name="connectionHandle">
+			</param>
+		</member>
+		<member name="M:mysql_debug" syntax="mysql_debug(enabled)">
+			<stacksize value="4"/>
+			<dependency name="LOG_DEBUG"/>
+			<dependency name="LOG_ERROR"/>
+			<dependency name="LOG_WARNING"/>
+			<dependency name="mysql_log"/>
+			<param name="enabled">
+			</param>
+		</member>
+		<member name="M:mysql_fetch_field" syntax="mysql_fetch_field(number, destination[], connectionHandle, max_len)">
+			<stacksize value="6"/>
+			<dependency name="cache_get_field_name"/>
+			<dependency name="strdel"/>
+			<param name="number">
+			</param>
+			<param name="destination">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="connectionHandle">
+			</param>
+			<param name="max_len">
+			</param>
+		</member>
+		<member name="M:mysql_fetch_field_row" syntax="mysql_fetch_field_row(destination[], fieldname[], connectionHandle, max_len)">
+			<stacksize value="8"/>
+			<referrer name="initialize_players"/>
+			<referrer name="get_character_value"/>
+			<referrer name="get_vehicle_value"/>
+			<dependency name="RowIndex"/>
+			<dependency name="cache_get_field_content"/>
+			<dependency name="strdel"/>
+			<param name="destination">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="fieldname">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="connectionHandle">
+			</param>
+			<param name="max_len">
+			</param>
+		</member>
+		<member name="M:mysql_fetch_row_format" syntax="mysql_fetch_row_format(destination[], delimiter[], connectionHandle, max_len)">
+			<stacksize value="523"/>
+			<dependency name="RowIndex"/>
+			<dependency name="cache_get_field_count"/>
+			<dependency name="cache_get_row"/>
+			<dependency name="mysql_retrieve_row"/>
+			<dependency name="strcat"/>
+			<dependency name="strdel"/>
+			<dependency name="strins"/>
+			<param name="destination">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="delimiter">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="connectionHandle">
+			</param>
+			<param name="max_len">
+			</param>
+		</member>
+		<member name="M:mysql_format" syntax="mysql_format(connectionHandle, output[], len, format[], ...)">
+			<attribute name="native"/>
+			<referrer name="player_login"/>
+			<referrer name="create_player"/>
+			<referrer name="set_player_id"/>
+			<referrer name="update_player"/>
+			<referrer name="initialize_players"/>
+			<referrer name="load_objects"/>
+			<referrer name="set_new_objects_on_places"/>
+			<referrer name="destroy_objects"/>
+			<referrer name="set_objects_cells"/>
+			<referrer name="is_any_object_in_range"/>
+			<referrer name="set_character_inventory_cell"/>
+			<referrer name="set_vehicle_inventory_cell"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="take_vehicle_inventory_cell"/>
+			<referrer name="give_vehicle_inventory_cell"/>
+			<referrer name="move_character_inventory_cell"/>
+			<referrer name="move_vehicle_inventory_cell"/>
+			<referrer name="get_inventory_properties_cell"/>
+			<referrer name="get_vehicle_properties_cell"/>
+			<referrer name="get_objects_properties"/>
+			<referrer name="get_vehicle_objects_properties"/>
+			<referrer name="get_inventory_properties"/>
+			<referrer name="get_object_data"/>
+			<referrer name="give_character_weapon"/>
+			<referrer name="save_character_ammo"/>
+			<referrer name="save_vehicle_state"/>
+			<referrer name="save_vehicle_position"/>
+			<referrer name="create_new_vehicle"/>
+			<referrer name="create_old_vehicle"/>
+			<referrer name="drop_vehicle_from_dot"/>
+			<referrer name="set_object_owner"/>
+			<referrer name="get_unused_object"/>
+			<referrer name="create_resident_object"/>
+			<referrer name="disassemble_resident_object"/>
+			<referrer name="disassemble_cell_object"/>
+			<referrer name="disassemble_inventory_object"/>
+			<referrer name="clear_all_owners"/>
+			<referrer name="full_free_object_from_owner"/>
+			<referrer name="put_object_on_free_place"/>
+			<referrer name="get_character_value"/>
+			<referrer name="get_vehicle_value"/>
+			<referrer name="get_thing_field"/>
+			<referrer name="set_character_cell_value"/>
+			<referrer name="get_character_state"/>
+			<referrer name="set_character_state"/>
+			<referrer name="set_character_health"/>
+			<referrer name="set_character_hunger"/>
+			<referrer name="set_character_thirst"/>
+			<referrer name="set_character_wound"/>
+			<referrer name="set_character_scores"/>
+			<referrer name="get_character_killer_name"/>
+			<referrer name="set_character_c_killer"/>
+			<referrer name="set_character_killer"/>
+			<referrer name="upscore_character"/>
+			<referrer name="save_player_position"/>
+			<referrer name="load_player_position"/>
+			<referrer name="save_state_and_position"/>
+			<referrer name="load_player_inventory"/>
+			<referrer name="load_vehicle_inventory"/>
+			<referrer name="update_player_position"/>
+			<referrer name="add_spawn_place"/>
+			<referrer name="add_dot_place"/>
+			<referrer name="upd_dot_place"/>
+			<referrer name="add_objects_to_gm"/>
+			<referrer name="add_car_place"/>
+			<referrer name="go_to_thing_place"/>
+			<referrer name="get_spawn_place"/>
+			<param name="connectionHandle">
+			</param>
+			<param name="output">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="len">
+			</param>
+			<param name="format">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="...">
+				<paraminfo> {Float,_} </paraminfo>
+			</param>
+		</member>
+		<member name="M:mysql_free_result" syntax="mysql_free_result(connectionHandle)">
+			<stacksize value="1"/>
+			<referrer name="initialize_players"/>
+			<referrer name="get_character_value"/>
+			<referrer name="get_vehicle_value"/>
+			<param name="connectionHandle">
+			</param>
+		</member>
+		<member name="M:mysql_log" syntax="mysql_log(loglevel, logtype)">
+			<attribute name="native"/>
+			<referrer name="mysql_debug"/>
+			<param name="loglevel">
+				<paraminfo>E_LOGLEVEL </paraminfo>
+			</param>
+			<param name="logtype">
+				<paraminfo>E_LOGTYPE </paraminfo>
+			</param>
+		</member>
+		<member name="M:mysql_num_fields" syntax="mysql_num_fields(connectionHandle)">
+			<stacksize value="3"/>
+			<dependency name="cache_get_field_count"/>
+			<param name="connectionHandle">
+			</param>
+		</member>
+		<member name="M:mysql_num_rows" syntax="mysql_num_rows(connectionHandle)">
+			<stacksize value="3"/>
+			<referrer name="initialize_players"/>
+			<referrer name="get_character_value"/>
+			<referrer name="get_vehicle_value"/>
+			<dependency name="cache_get_row_count"/>
+			<param name="connectionHandle">
+			</param>
+		</member>
+		<member name="M:mysql_query" syntax="mysql_query(conhandle, query[], use_cache)">
+			<tagname value="Cache"/>
+			<attribute name="native"/>
+			<referrer name="open_database"/>
+			<referrer name="player_login"/>
+			<referrer name="create_player"/>
+			<referrer name="set_player_id"/>
+			<referrer name="update_player"/>
+			<referrer name="initialize_players"/>
+			<referrer name="load_objects"/>
+			<referrer name="set_new_objects_on_places"/>
+			<referrer name="destroy_objects"/>
+			<referrer name="set_objects_cells"/>
+			<referrer name="is_any_object_in_range"/>
+			<referrer name="set_character_inventory_cell"/>
+			<referrer name="set_vehicle_inventory_cell"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="take_vehicle_inventory_cell"/>
+			<referrer name="give_vehicle_inventory_cell"/>
+			<referrer name="move_character_inventory_cell"/>
+			<referrer name="move_vehicle_inventory_cell"/>
+			<referrer name="get_inventory_properties_cell"/>
+			<referrer name="get_vehicle_properties_cell"/>
+			<referrer name="get_objects_properties"/>
+			<referrer name="get_vehicle_objects_properties"/>
+			<referrer name="get_inventory_properties"/>
+			<referrer name="get_object_data"/>
+			<referrer name="give_character_weapon"/>
+			<referrer name="save_character_ammo"/>
+			<referrer name="save_vehicle_state"/>
+			<referrer name="save_vehicle_position"/>
+			<referrer name="create_new_vehicle"/>
+			<referrer name="create_old_vehicle"/>
+			<referrer name="drop_vehicle_from_dot"/>
+			<referrer name="set_object_owner"/>
+			<referrer name="get_unused_object"/>
+			<referrer name="create_resident_object"/>
+			<referrer name="disassemble_resident_object"/>
+			<referrer name="disassemble_cell_object"/>
+			<referrer name="disassemble_inventory_object"/>
+			<referrer name="clear_all_owners"/>
+			<referrer name="full_free_object_from_owner"/>
+			<referrer name="put_object_on_free_place"/>
+			<referrer name="get_character_value"/>
+			<referrer name="get_vehicle_value"/>
+			<referrer name="get_thing_field"/>
+			<referrer name="set_character_cell_value"/>
+			<referrer name="get_character_state"/>
+			<referrer name="set_character_state"/>
+			<referrer name="set_character_health"/>
+			<referrer name="set_character_hunger"/>
+			<referrer name="set_character_thirst"/>
+			<referrer name="set_character_wound"/>
+			<referrer name="set_character_scores"/>
+			<referrer name="get_character_killer_name"/>
+			<referrer name="set_character_c_killer"/>
+			<referrer name="set_character_killer"/>
+			<referrer name="upscore_character"/>
+			<referrer name="save_player_position"/>
+			<referrer name="load_player_position"/>
+			<referrer name="save_state_and_position"/>
+			<referrer name="load_player_inventory"/>
+			<referrer name="load_vehicle_inventory"/>
+			<referrer name="update_player_position"/>
+			<referrer name="add_spawn_place"/>
+			<referrer name="add_dot_place"/>
+			<referrer name="upd_dot_place"/>
+			<referrer name="add_objects_to_gm"/>
+			<referrer name="add_car_place"/>
+			<referrer name="go_to_thing_place"/>
+			<referrer name="get_spawn_place"/>
+			<param name="conhandle">
+			</param>
+			<param name="query">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="use_cache">
+				<paraminfo>bool </paraminfo>
+			</param>
+		</member>
+		<member name="M:mysql_reload" syntax="mysql_reload(connectionHandle)">
+			<stacksize value="6"/>
+			<dependency name="mysql_tquery"/>
+			<param name="connectionHandle">
+			</param>
+		</member>
+		<member name="M:mysql_retrieve_row" syntax="mysql_retrieve_row(connectionHandle)">
+			<stacksize value="3"/>
+			<referrer name="mysql_fetch_row_format"/>
+			<referrer name="initialize_players"/>
+			<referrer name="get_character_value"/>
+			<referrer name="get_vehicle_value"/>
+			<dependency name="RetrieveRow"/>
+			<dependency name="RowIndex"/>
+			<dependency name="cache_get_row_count"/>
+			<dependency name="false"/>
+			<dependency name="true"/>
+			<param name="connectionHandle">
+			</param>
+		</member>
+		<member name="M:mysql_store_result" syntax="mysql_store_result(connectionHandle)">
+			<stacksize value="1"/>
+			<referrer name="initialize_players"/>
+			<referrer name="get_character_value"/>
+			<referrer name="get_vehicle_value"/>
+			<referrer name="add_dot_place"/>
+			<referrer name="upd_dot_place"/>
+			<referrer name="add_car_place"/>
+			<referrer name="go_to_thing_place"/>
+			<dependency name="RetrieveRow"/>
+			<dependency name="RowIndex"/>
+			<dependency name="false"/>
+			<param name="connectionHandle">
+			</param>
+		</member>
+		<member name="M:mysql_tquery" syntax="mysql_tquery(connectionHandle, query[], callback[], format[], ...)">
+			<attribute name="native"/>
+			<referrer name="mysql_reload"/>
+			<param name="connectionHandle">
+			</param>
+			<param name="query">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="callback">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="format">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="...">
+				<paraminfo> {Float,_} </paraminfo>
+			</param>
+		</member>
+		<member name="M:open_database" syntax="open_database()">
+			<attribute name="public"/>
+			<stacksize value="9"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_connect"/>
+			<dependency name="mysql_query"/>
+		</member>
+		<member name="M:pick_object_from_owner" syntax="pick_object_from_owner(obj_id)">
+			<attribute name="public"/>
+			<stacksize value="1"/>
+			<param name="obj_id">
+			</param>
+		</member>
+		<member name="M:player_login" syntax="player_login(playerid, password[])">
+			<attribute name="public"/>
+			<stacksize value="699"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="create_player"/>
+			<dependency name="false"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="set_player_id"/>
+			<dependency name="strcmp"/>
+			<dependency name="strdel"/>
+			<dependency name="update_player"/>
+			<param name="playerid">
+			</param>
+			<param name="password">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:print" syntax="print(string[])">
+			<attribute name="native"/>
+			<referrer name="get_vehicle_objects_properties"/>
+			<referrer name="create_composite_object"/>
+			<referrer name="disassemble_cell_object"/>
+			<referrer name="put_object_on_free_place"/>
+			<referrer name="get_thing_field"/>
+			<referrer name="load_vehicle_inventory"/>
+			<param name="string">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:printf" syntax="printf(format[], ...)">
+			<attribute name="native"/>
+			<referrer name="get_thing_field"/>
+			<param name="format">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="...">
+				<paraminfo> {Float,_} </paraminfo>
+			</param>
+		</member>
+		<member name="M:put_object_on_free_place" syntax="put_object_on_free_place(object_id)">
+			<stacksize value="552"/>
+			<referrer name="full_free_object_from_owner"/>
+			<referrer name="free_object_from_owner"/>
+			<dependency name="operator+(Float:,Float:)"/>
+			<dependency name="Float:operator=(_:)"/>
+			<dependency name="CreateDynamicObject"/>
+			<dependency name="DestroyVehicle"/>
+			<dependency name="MapAndreas_Valid_Z_Coordinate"/>
+			<dependency name="VectorSize"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_float"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="create_new_vehicle"/>
+			<dependency name="gMysql"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVeh"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="print"/>
+			<param name="object_id">
+			</param>
+		</member>
+		<member name="M:save_character_ammo" syntax="save_character_ammo(playerid)">
+			<attribute name="public"/>
+			<stacksize value="144"/>
+			<referrer name="drop_character_inventory_cell"/>
+			<referrer name="give_vehicle_inventory_cell"/>
+			<referrer name="give_character_weapon"/>
+			<referrer name="create_composite_object"/>
+			<referrer name="disassemble_cell_object"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="cache_save"/>
+			<dependency name="cache_set_active"/>
+			<dependency name="free_object_from_owner"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayerWeapon"/>
+			<dependency name="gPlayerWeapon"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:save_player_position" syntax="save_player_position(playerid)">
+			<attribute name="public"/>
+			<stacksize value="271"/>
+			<referrer name="free_players"/>
+			<dependency name="GetPlayerFacingAngle"/>
+			<dependency name="GetPlayerPos"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:save_state_and_position" syntax="save_state_and_position(playerid)">
+			<attribute name="public"/>
+			<stacksize value="276"/>
+			<referrer name="update_character_state"/>
+			<dependency name="GetPlayerFacingAngle"/>
+			<dependency name="GetPlayerPos"/>
+			<dependency name="gHealth"/>
+			<dependency name="gHunger"/>
+			<dependency name="gKiller"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="gThirst"/>
+			<dependency name="gWound"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:save_vehicle_position" syntax="save_vehicle_position(vehicleid)">
+			<attribute name="public"/>
+			<stacksize value="545"/>
+			<dependency name="GetVehicleDamageStatus"/>
+			<dependency name="GetVehicleParamsEx"/>
+			<dependency name="GetVehiclePos"/>
+			<dependency name="GetVehicleZAngle"/>
+			<dependency name="VectorSize"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVeh"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="vehicleid">
+			</param>
+		</member>
+		<member name="M:save_vehicle_state" syntax="save_vehicle_state(playerid, vehicleid)">
+			<attribute name="public"/>
+			<stacksize value="555"/>
+			<referrer name="update_vehicle_state"/>
+			<referrer name="destroy_objects"/>
+			<dependency name="DestroyVehicle"/>
+			<dependency name="GetVehicleDamageStatus"/>
+			<dependency name="GetVehicleParamsEx"/>
+			<dependency name="GetVehiclePos"/>
+			<dependency name="GetVehicleZAngle"/>
+			<dependency name="IsPlayerAdmin"/>
+			<dependency name="SendClientMessage"/>
+			<dependency name="SetVehicleParamsEx"/>
+			<dependency name="VectorSize"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="false"/>
+			<dependency name="free_object_from_owner"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVeh"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="true"/>
+			<dependency name="update_vehicle_sensors"/>
+			<param name="playerid">
+			</param>
+			<param name="vehicleid">
+			</param>
+		</member>
+		<member name="M:set_character_c_killer" syntax="set_character_c_killer(playerid)">
+			<attribute name="public"/>
+			<stacksize value="136"/>
+			<dependency name="gKiller"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:set_character_cell_value" syntax="set_character_cell_value(playerid, cell, value)">
+			<attribute name="public"/>
+			<stacksize value="522"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="playerid">
+			</param>
+			<param name="cell">
+			</param>
+			<param name="value">
+			</param>
+		</member>
+		<member name="M:set_character_health" syntax="set_character_health(playerid, health)">
+			<attribute name="public"/>
+			<stacksize value="137"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="update_sensor_health"/>
+			<param name="playerid">
+			</param>
+			<param name="health">
+			</param>
+		</member>
+		<member name="M:set_character_hunger" syntax="set_character_hunger(playerid, hunger)">
+			<attribute name="public"/>
+			<stacksize value="137"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="update_sensor_hunger"/>
+			<param name="playerid">
+			</param>
+			<param name="hunger">
+			</param>
+		</member>
+		<member name="M:set_character_inventory_cell" syntax="set_character_inventory_cell(playerid, cell, object_id)">
+			<attribute name="public"/>
+			<stacksize value="270"/>
+			<referrer name="get_inventory_properties_cell"/>
+			<referrer name="get_inventory_properties"/>
+			<referrer name="create_composite_object"/>
+			<referrer name="disassemble_cell_object"/>
+			<dependency name="DestroyDynamicObject"/>
+			<dependency name="IsValidDynamicObject"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gInv"/>
+			<dependency name="gInv"/>
+			<dependency name="gInvThing"/>
+			<dependency name="gInvThing"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="playerid">
+			</param>
+			<param name="cell">
+			</param>
+			<param name="object_id">
+			</param>
+		</member>
+		<member name="M:set_character_killer" syntax="set_character_killer(playerid)">
+			<attribute name="public"/>
+			<stacksize value="136"/>
+			<dependency name="gKiller"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="update_statistic_data"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:set_character_scores" syntax="set_character_scores(playerid, scores)">
+			<attribute name="public"/>
+			<stacksize value="136"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="playerid">
+			</param>
+			<param name="scores">
+			</param>
+		</member>
+		<member name="M:set_character_state" syntax="set_character_state(playerid, health, hunger, thirst, wound)">
+			<attribute name="public"/>
+			<stacksize value="523"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="playerid">
+			</param>
+			<param name="health">
+			</param>
+			<param name="hunger">
+			</param>
+			<param name="thirst">
+			</param>
+			<param name="wound">
+			</param>
+		</member>
+		<member name="M:set_character_thirst" syntax="set_character_thirst(playerid, thirst)">
+			<attribute name="public"/>
+			<stacksize value="137"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="update_sensor_thirst"/>
+			<param name="playerid">
+			</param>
+			<param name="thirst">
+			</param>
+		</member>
+		<member name="M:set_character_wound" syntax="set_character_wound(playerid, wound)">
+			<attribute name="public"/>
+			<stacksize value="136"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="update_sensor_wound"/>
+			<param name="playerid">
+			</param>
+			<param name="wound">
+			</param>
+		</member>
+		<member name="M:set_new_objects_on_places" syntax="set_new_objects_on_places()">
+			<attribute name="public"/>
+			<stacksize value="1073"/>
+			<dependency name="operator+(Float:,Float:)"/>
+			<dependency name="Float:operator=(_:)"/>
+			<dependency name="CreateDynamicObject"/>
+			<dependency name="MapAndreas_Valid_Z_Coordinate"/>
+			<dependency name="VectorSize"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_float"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="cache_save"/>
+			<dependency name="cache_set_active"/>
+			<dependency name="composit_thing"/>
+			<dependency name="create_new_vehicle"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+		</member>
+		<member name="M:set_object_owner" syntax="set_object_owner(th_owner_id, object_id)">
+			<attribute name="public"/>
+			<stacksize value="524"/>
+			<referrer name="create_composite_object"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="th_owner_id">
+			</param>
+			<param name="object_id">
+			</param>
+		</member>
+		<member name="M:set_objects_cells" syntax="set_objects_cells(playerid, range)">
+			<attribute name="public"/>
+			<stacksize value="279"/>
+			<referrer name="get_objects_properties"/>
+			<dependency name="operator-(Float:,Float:)"/>
+			<dependency name="operator&lt;(Float:,Float:)"/>
+			<dependency name="GetPlayerPos"/>
+			<dependency name="VectorSize"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_float"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="gObj"/>
+			<dependency name="gObj"/>
+			<dependency name="gObjThing"/>
+			<dependency name="gObjThing"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="playerid">
+			</param>
+			<param name="range">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:set_player_id" syntax="set_player_id(playerid)">
+			<attribute name="public"/>
+			<stacksize value="186"/>
+			<referrer name="player_login"/>
+			<referrer name="create_player"/>
+			<referrer name="load_player_position"/>
+			<referrer name="load_player_inventory"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:set_vehicle_cells" syntax="set_vehicle_cells(vehicleid)">
+			<attribute name="public"/>
+			<stacksize value="31"/>
+			<referrer name="get_vehicle_objects_properties"/>
+			<dependency name="gVehMod"/>
+			<dependency name="gVehMod"/>
+			<dependency name="gVehObj"/>
+			<dependency name="gVehObj"/>
+			<dependency name="load_vehicle_inventory"/>
+			<param name="vehicleid">
+			</param>
+		</member>
+		<member name="M:set_vehicle_inventory_cell" syntax="set_vehicle_inventory_cell(vehicleid, cell, object_id)">
+			<attribute name="public"/>
+			<stacksize value="271"/>
+			<referrer name="get_vehicle_properties_cell"/>
+			<dependency name="DestroyDynamicObject"/>
+			<dependency name="IsValidDynamicObject"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVehMod"/>
+			<dependency name="gVehMod"/>
+			<dependency name="gVehObj"/>
+			<dependency name="gVehObj"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="vehicleid">
+			</param>
+			<param name="cell">
+			</param>
+			<param name="object_id">
+			</param>
+		</member>
+		<member name="M:show_smoke_map" syntax="show_smoke_map(playerid)">
+			<attribute name="public"/>
+			<stacksize value="5"/>
+			<dependency name="GangZoneShowForPlayer"/>
+			<dependency name="gHideMapZone"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:show_smoke_statistic" syntax="show_smoke_statistic(playerid)">
+			<attribute name="public"/>
+			<stacksize value="4"/>
+			<dependency name="TextDrawShowForPlayer"/>
+			<dependency name="smokescreen"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:show_smokescreen" syntax="show_smokescreen(playerid)">
+			<attribute name="public"/>
+			<stacksize value="4"/>
+			<dependency name="TextDrawShowForPlayer"/>
+			<dependency name="smokescreen"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:show_statistic_data" syntax="show_statistic_data(playerid)">
+			<attribute name="public"/>
+			<stacksize value="5"/>
+			<dependency name="PlayerTextDrawShow"/>
+			<dependency name="gStatisticData"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:strcat" syntax="strcat(dest[], source[], maxlength)">
+			<attribute name="native"/>
+			<referrer name="mysql_fetch_row_format"/>
+			<referrer name="create_composite_object"/>
+			<param name="dest">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="source">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="maxlength">
+			</param>
+		</member>
+		<member name="M:strcmp" syntax="strcmp(string1[], string2[], ignorecase, length)">
+			<attribute name="native"/>
+			<referrer name="player_login"/>
+			<referrer name="get_character_value"/>
+			<referrer name="get_vehicle_value"/>
+			<param name="string1">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="string2">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="ignorecase">
+				<paraminfo>bool </paraminfo>
+			</param>
+			<param name="length">
+			</param>
+		</member>
+		<member name="M:strdel" syntax="strdel(string[], start, end)">
+			<tagname value="bool"/>
+			<attribute name="native"/>
+			<referrer name="mysql_fetch_field"/>
+			<referrer name="mysql_fetch_field_row"/>
+			<referrer name="mysql_fetch_row_format"/>
+			<referrer name="player_login"/>
+			<referrer name="initialize_players"/>
+			<referrer name="get_object_data"/>
+			<referrer name="create_composite_object"/>
+			<referrer name="disassemble_cell_object"/>
+			<referrer name="clear_all_owners"/>
+			<referrer name="get_character_health"/>
+			<referrer name="get_character_hunger"/>
+			<referrer name="get_character_thirst"/>
+			<referrer name="get_character_wound"/>
+			<referrer name="get_character_scores"/>
+			<referrer name="get_spawn_place"/>
+			<param name="string">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="start">
+			</param>
+			<param name="end">
+			</param>
+		</member>
+		<member name="M:strins" syntax="strins(string[], substr[], pos, maxlength)">
+			<tagname value="bool"/>
+			<attribute name="native"/>
+			<referrer name="mysql_fetch_row_format"/>
+			<param name="string">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="substr">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="pos">
+			</param>
+			<param name="maxlength">
+			</param>
+		</member>
+		<member name="M:strlen" syntax="strlen(string[])">
+			<attribute name="native"/>
+			<referrer name="create_composite_object"/>
+			<referrer name="get_thing_field"/>
+			<param name="string">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:strval" syntax="strval(string[])">
+			<attribute name="native"/>
+			<referrer name="initialize_players"/>
+			<referrer name="disassemble_cell_object"/>
+			<referrer name="get_character_health"/>
+			<referrer name="get_character_hunger"/>
+			<referrer name="get_character_thirst"/>
+			<referrer name="get_character_wound"/>
+			<referrer name="get_character_scores"/>
+			<param name="string">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:take_vehicle_inventory_cell" syntax="take_vehicle_inventory_cell(playerid, vehicleid, cell, veh_cell)">
+			<attribute name="public"/>
+			<stacksize value="275"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gInv"/>
+			<dependency name="gInv"/>
+			<dependency name="gInvThing"/>
+			<dependency name="gInvThing"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVehMod"/>
+			<dependency name="gVehMod"/>
+			<dependency name="gVehObj"/>
+			<dependency name="gVehObj"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="playerid">
+			</param>
+			<param name="vehicleid">
+			</param>
+			<param name="cell">
+			</param>
+			<param name="veh_cell">
+			</param>
+		</member>
+		<member name="M:upd_dot_place" syntax="upd_dot_place(type)">
+			<attribute name="public"/>
+			<stacksize value="141"/>
+			<dependency name="cache_delete"/>
+			<dependency name="cache_get_data"/>
+			<dependency name="cache_get_field_content_int"/>
+			<dependency name="cache_is_valid"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="mysql_store_result"/>
+			<param name="type">
+			</param>
+		</member>
+		<member name="M:update_character_state" syntax="update_character_state()">
+			<attribute name="public"/>
+			<stacksize value="5"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="IsPlayerSpawned"/>
+			<dependency name="gHealth"/>
+			<dependency name="save_state_and_position"/>
+		</member>
+		<member name="M:update_live_sensors" syntax="update_live_sensors()">
+			<attribute name="public"/>
+			<stacksize value="6"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="IsPlayerSpawned"/>
+			<dependency name="gHealth"/>
+			<dependency name="gHunger"/>
+			<dependency name="gThirst"/>
+			<dependency name="gWound"/>
+			<dependency name="update_sensor_health"/>
+			<dependency name="update_sensor_hunger"/>
+			<dependency name="update_sensor_thirst"/>
+			<dependency name="update_statistic_data"/>
+		</member>
+		<member name="M:update_player" syntax="update_player(playerid)">
+			<attribute name="public"/>
+			<stacksize value="338"/>
+			<referrer name="player_login"/>
+			<dependency name="GetPlayerIp"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="gMysql"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:update_player_position" syntax="update_player_position(playerid)">
+			<attribute name="public"/>
+			<stacksize value="271"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:update_sensor_health" syntax="update_sensor_health(playerid, health)">
+			<attribute name="public"/>
+			<stacksize value="7"/>
+			<referrer name="update_live_sensors"/>
+			<referrer name="create_sensors"/>
+			<referrer name="set_character_health"/>
+			<dependency name="Float:operator=(_:)"/>
+			<dependency name="PlayerTextDrawColor"/>
+			<dependency name="PlayerTextDrawHide"/>
+			<dependency name="PlayerTextDrawShow"/>
+			<dependency name="SetPlayerHealth"/>
+			<dependency name="kill_character"/>
+			<dependency name="sensors"/>
+			<dependency name="update_statistic_data"/>
+			<param name="playerid">
+			</param>
+			<param name="health">
+			</param>
+		</member>
+		<member name="M:update_sensor_hunger" syntax="update_sensor_hunger(playerid, hunger)">
+			<attribute name="public"/>
+			<stacksize value="7"/>
+			<referrer name="update_live_sensors"/>
+			<referrer name="create_sensors"/>
+			<referrer name="set_character_hunger"/>
+			<dependency name="PlayerTextDrawColor"/>
+			<dependency name="PlayerTextDrawHide"/>
+			<dependency name="PlayerTextDrawShow"/>
+			<dependency name="kill_character"/>
+			<dependency name="sensors"/>
+			<param name="playerid">
+			</param>
+			<param name="hunger">
+			</param>
+		</member>
+		<member name="M:update_sensor_thirst" syntax="update_sensor_thirst(playerid, thirst)">
+			<attribute name="public"/>
+			<stacksize value="7"/>
+			<referrer name="update_live_sensors"/>
+			<referrer name="create_sensors"/>
+			<referrer name="set_character_thirst"/>
+			<dependency name="PlayerTextDrawColor"/>
+			<dependency name="PlayerTextDrawHide"/>
+			<dependency name="PlayerTextDrawShow"/>
+			<dependency name="kill_character"/>
+			<dependency name="sensors"/>
+			<param name="playerid">
+			</param>
+			<param name="thirst">
+			</param>
+		</member>
+		<member name="M:update_sensor_wound" syntax="update_sensor_wound(playerid, wound)">
+			<attribute name="public"/>
+			<stacksize value="7"/>
+			<referrer name="create_sensors"/>
+			<referrer name="set_character_wound"/>
+			<dependency name="PlayerTextDrawColor"/>
+			<dependency name="PlayerTextDrawHide"/>
+			<dependency name="PlayerTextDrawShow"/>
+			<dependency name="sensors"/>
+			<param name="playerid">
+			</param>
+			<param name="wound">
+			</param>
+		</member>
+		<member name="M:update_statistic_data" syntax="update_statistic_data(playerid)">
+			<attribute name="public"/>
+			<stacksize value="38"/>
+			<referrer name="update_live_sensors"/>
+			<referrer name="update_sensor_health"/>
+			<referrer name="set_character_killer"/>
+			<referrer name="upscore_character"/>
+			<dependency name="PlayerTextDrawHide"/>
+			<dependency name="PlayerTextDrawSetString"/>
+			<dependency name="PlayerTextDrawShow"/>
+			<dependency name="format"/>
+			<dependency name="gHealth"/>
+			<dependency name="gScores"/>
+			<dependency name="gStatisticData"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:update_vehicle_sensors" syntax="update_vehicle_sensors(playerid)">
+			<attribute name="public"/>
+			<stacksize value="10"/>
+			<referrer name="update_vehicle_state"/>
+			<referrer name="save_vehicle_state"/>
+			<dependency name="operator-(Float:,Float:)"/>
+			<dependency name="operator+(Float:,Float:)"/>
+			<dependency name="operator/(Float:,Float:)"/>
+			<dependency name="operator*(Float:,Float:)"/>
+			<dependency name="operator&lt;(Float:,Float:)"/>
+			<dependency name="CreatePlayerTextDraw"/>
+			<dependency name="PlayerTextDrawBackgroundColor"/>
+			<dependency name="PlayerTextDrawBoxColor"/>
+			<dependency name="PlayerTextDrawColor"/>
+			<dependency name="PlayerTextDrawHide"/>
+			<dependency name="PlayerTextDrawLetterSize"/>
+			<dependency name="PlayerTextDrawSetShadow"/>
+			<dependency name="PlayerTextDrawShow"/>
+			<dependency name="PlayerTextDrawTextSize"/>
+			<dependency name="PlayerTextDrawUseBox"/>
+			<dependency name="destroy_vehicle_sensors"/>
+			<dependency name="gTdDataVehicle"/>
+			<dependency name="gTdDataVehicle"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVehicleDataShow"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:update_vehicle_state" syntax="update_vehicle_state()">
+			<attribute name="public"/>
+			<stacksize value="10"/>
+			<dependency name="operator&gt;(Float:,Float:)"/>
+			<dependency name="DestroyVehicle"/>
+			<dependency name="GetVehicleHealth"/>
+			<dependency name="IsPlayerAdmin"/>
+			<dependency name="IsPlayerInVehicle"/>
+			<dependency name="SendClientMessage"/>
+			<dependency name="false"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVeh"/>
+			<dependency name="gVehicleDataShow"/>
+			<dependency name="save_vehicle_state"/>
+			<dependency name="update_vehicle_sensors"/>
+		</member>
+		<member name="M:upscore_character" syntax="upscore_character(db_playerid)">
+			<attribute name="public"/>
+			<stacksize value="136"/>
+			<dependency name="SetPlayerScore"/>
+			<dependency name="gMysql"/>
+			<dependency name="gPlayersID"/>
+			<dependency name="gScores"/>
+			<dependency name="mysql_format"/>
+			<dependency name="mysql_query"/>
+			<dependency name="update_statistic_data"/>
+			<param name="db_playerid">
+			</param>
+		</member>
+
+	</members>
+</doc>

@@ -1,0 +1,106 @@
+SA:MP server 0.3z-R4 is needed
+
+
+Install:
+
+-host: 			127.0.0.1
+-database name: 	dayz
+-user name:	 	user
+-password: 		password
+
+You can change this values. In pawno folder:
+-create MySQL DB with name you set in defines.inc (DBNAME parameter)
+-add user to this DB with name (USER parameter) and password (PASSWD parameter) you set in defines.inc
+-compile menu.pwn
+-copy menu.amx in filterscripts folder
+in server folder:
+-fill in the database with one of this files:
+  1) dayz_data_mysql40_11_11_2014.sql 	(full MySQL database v4)
+  2) dayz_data_mysql56_11_11_2014.sql 	(full MySQL database v5)
+  3) dayz_empty_db.sql 			(empty MySQL database v5)
+  4) dayz_empty_db_40.sql 		(empty MySQL database v4)
+Every player in this databases have password: "password"
+If you filled database with full data (#1 or #2), start to play!
+
+
+
+Filling:
+
+-use next commands for filling (from  the game):
+/addspawn - add player spawn place in the place you are standing
+/addcar - add car spawn place in the place you are standing
+/adddot [type1, type2, type3 ...] - add object spawn place (see type id in 'thing_type' table in database) in the place you are standing
+/upddot <type1, type2, ...> - add object types to the last dott created with /adddot command
+/addobj <item id> [number] - add object in game (see id in 'things' table in database)
+/setnew - set new objects you added with /adddot command on spawn places
+
+The state and position of every (!) item in mode is tracked. So, the object count is static (if you don't add any one).
+
+
+
+Editor:
+
+You can add new types of objects in game. Files things.txt and imes.txt contains all information about things.
+The rules for editing this files are inside them.
+File things.txt contains parameters. File imes.txt contains name and description on several languages.
+You MUST add description for every thing in imes.txt file! Every thing has three records:
+
+[XXXXXXXXXXX]
+ru {...}
+en {...}
+es {...}
+[XXXXXXXXXXX_VALUE]
+ru {...%d...}
+en {...%d...}
+es {...%d...}
+[XXXXXXXXXXX_ABOUT]
+es {...}
+en {...}
+ru {...}
+
+
+where XXXXXXXXXXX - system name from things.txt (wich is in []). It contains only letters from the Latin alphabet and '_' char!
+      XXXXXXXXXXX_VALUE - unit; must have "%d"; see patterns from this file
+      XXXXXXXXXXX_ABOUT - description this thing
+
+
+
+About DayZ+ mode:
+
+-every item in mode is tracked (untill every bullet)
+-player items placed around the site of his death
+-you can put some items in a vehicle
+-gasoline can be drained from the tank to the canister
+-any weapon can be unloaded to get ammo
+-headshots
+
+Extra admin commands:
+/nextcar - teleport to some (random) vehicle
+/live - restore player health state
+/update - reload things.txt (linux only)
+/tp - teleport
+/radius <meters> - set chat radius
+/wound - get wound (debugging)
+/hun1000 - get hunger (debugging)
+/set10 - set low health (debugging)
+/menu - show inventory menu
+/hide - hide inventory menu
+/kill - standart kill command
+
+
+
+About engine:
+
+-flexible system for adding new things (for linux version, you can add 'to hot', without restarting the server)
+-system composite items, i.e. You can specify rules for the composing and parsing of items in the inventory
+-built-in multi-language support (utf8)
+-position tracking system by which an item would not be behind the blank wall, or under the ground
+-realistic positioning (gradient using)
+-registration/authorisation system
+-bullets, polyer and vehicle state anticheat
+-weapon anticheat
+-speed anticheat
+
+
+Donate: 
+WebMoney R136948879113 Z366027738164 E254161439657

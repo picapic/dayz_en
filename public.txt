@@ -1,0 +1,6 @@
+It is an engine for DayZ mode creating. All loot description located in separate files.
+So, edit this mode is very easy!
+
+Это полноценный движок, с помощью которого можно быстро создавать моды типа DayZ.
+Практически всё описание лута (вещей) вынесено в отдельные файлы,
+поэтому любой мод на данном движке легко поддаётся редактированию.

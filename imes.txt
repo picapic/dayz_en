@@ -1,0 +1,630 @@
+﻿#international message file
+#imessage v1.0 plugin by Bombo is needed
+#Supported languages: "en","ru","fr","uk","es","cs","de","it","pl","tr","sr","bg","ro"
+#
+#Format of the name: "\n[MESSAGE_NAME]\n", where MESSAGE_NAME is latin only
+#Format of the language: "\nxx {", xx - language code, contains 2 latin characters only
+#Format of the end of string: "};\n", no spaces between caracters
+#In the end of file: "\n\n", message lost is possible in other case (!)
+#
+#Encoding: UTF8
+#New line: Unix
+#
+#File size is unlimited.
+#Location: samp-server root
+
+#мультиязыковой файл
+#требуется плагин imessage v1.0 by Bombo
+#Поддерживаемые языки: "ru","en","fr","uk","es","cs","de","it","pl","tr","sr","bg","ro"
+#
+#Формат имени сообщения: "\n[MESSAGE_NAME]\n", имя сообщения всегда латинскими буквами
+#Формат задания языка: "\nxx {", где xx - обозначение языка, всегда 2 латинских символа
+#Формат конца строчки: "};\n", все три символа должны быть рядом
+#В конце файла обязательно: "\n\n" (!), иначе потеряется последнее сообщение
+#
+#Кодировка файла: UTF8
+#Конец строки: Unix
+#
+#Файл практически не имеет ограничения по объёму.
+#Расположение: в одной директории с samp03svr
+
+
+[VAN_VEHICLE]
+en {Van};
+ru {Фургончик};
+[VAN_VEHICLE_VALUE]
+en {Engine condition: %d};
+ru {Состояние двигателя: %d};
+[VAN_VEHICLE_ABOUT]
+en {The best!};
+ru {Мечта!};
+
+
+[JEEP_VEHICLE]
+en {Jeep};
+ru {Внедорожник};
+[JEEP_VEHICLE_VALUE]
+en {Engine condition: %d};
+ru {Состояние двигателя: %d};
+[JEEP_VEHICLE_ABOUT]
+en {Good vehicle!};
+ru {Немного прожорлив, да и объём бака небольшой. А в целом - прекрасное авто!};
+
+
+[BICYCLE_VEHICLE]
+en {Bike};
+ru {Велосипед};
+[BICYCLE_VEHICLE_VALUE]
+en {Engine presence: %d};
+ru {Двигателей: %d};
+[BICYCLE_VEHICLE_ABOUT]
+en {Cool shit!};
+ru {То что надо!};
+
+
+[CAR_TOOLBOX]
+en {Toolbox};
+ru {Набор инструментов};
+[CAR_TOOLBOX_VALUE]
+en {Condition: %dk};
+ru {Состояние: %dk};
+[CAR_TOOLBOX_ABOUT]
+en {It's necessary thing.};
+#ru {Необходим для установки двигателя в авто.};
+ru {Необходим для ремонта авто.};
+
+
+[AK47_AMMO]
+en {AK47 ammo};
+ru {Патроны АК47};
+[AK47_AMMO_VALUE]
+en {Quantity: %d};
+ru {Количество: %d шт.};
+[AK47_AMMO_ABOUT]
+en {Caliber 7.62};
+ru {Калибр 7.62};
+
+
+[M4_AMMO]
+en {M4 ammo};
+ru {Патроны для M4};
+[M4_AMMO_VALUE]
+en {Quantity: %d};
+ru {Количество: %d шт.};
+[M4_AMMO_ABOUT]
+en {Caliber 5.56};
+ru {Калибр 5.56};
+
+
+[RIFLE_AMMO]
+en {Rifle ammo};
+ru {Патроны для винтовки};
+[RIFLE_AMMO_VALUE]
+en {Quantity: %d};
+ru {Количество: %d шт.};
+[RIFLE_AMMO_ABOUT]
+en {Nice!};
+ru {Сила!};
+
+
+[PISTOL_AMMO]
+en {Pistol ammo};
+ru {Патроны для пистолета};
+[PISTOL_AMMO_VALUE]
+en {Quantity: %d};
+ru {Количество: %d шт.};
+[PISTOL_AMMO_ABOUT]
+en {Caliber 45};
+ru {45 калибр};
+
+
+[EMPTY_AK47]
+en {Empty AK47};
+ru {Разряженый АК47};
+[EMPTY_AK47_VALUE]
+en {Ammo: %d};
+ru {Патронов: %d шт.};
+[EMPTY_AK47_ABOUT]
+en {Just load it!};
+ru {Бесполезен, пока не заряжен.};
+
+
+[LOADED_AK47]
+en {Loaded AK47};
+ru {Заряженный АК47};
+[LOADED_AK47_VALUE]
+en {Ammo: %d};
+ru {Патронов: %d шт.};
+[LOADED_AK47_ABOUT]
+en {Good!};
+ru {Отлично!};
+
+
+[EMPTY_PISTOL]
+en {Empty pistol};
+ru {Разряженый пистолет};
+[EMPTY_PISTOL_VALUE]
+en {Ammo: %d};
+ru {Патронов: %d шт.};
+[EMPTY_PISTOL_ABOUT]
+en {};
+ru {};
+
+
+[LOADED_PISTOL]
+en {Loaded pistol};
+ru {Заряженный пистолет};
+[LOADED_PISTOL_VALUE]
+en {Ammo: %d};
+ru {Патронов: %d шт.};
+[LOADED_PISTOL_ABOUT]
+en {};
+ru {};
+
+
+[EMPTY_M4]
+en {Empty M4};
+ru {Разряженая M4};
+[EMPTY_M4_VALUE]
+en {Ammo: %d};
+ru {Патронов: %d шт.};
+[EMPTY_M4_ABOUT]
+en {};
+ru {};
+
+
+[LOADED_M4]
+en {Loaded M4};
+ru {Заряженная M4};
+[LOADED_M4_VALUE]
+en {Ammo: %d};
+ru {Патронов: %d шт.};
+[LOADED_M4_ABOUT]
+en {};
+ru {};
+
+
+[EMPTY_RIFLE]
+en {Empty rifle};
+ru {Разряженая винтовка};
+[EMPTY_RIFLE_VALUE]
+en {Ammo: %d};
+ru {Патронов: %d шт.};
+[EMPTY_RIFLE_ABOUT]
+en {};
+ru {};
+
+
+[LOADED_RIFLE]
+en {Loaded rifle};
+ru {Заряженная винтовка};
+[LOADED_RIFLE_VALUE]
+en {Ammo: %d};
+ru {Патронов: %d шт.};
+[LOADED_RIFLE_ABOUT]
+en {};
+ru {};
+
+
+[BOTTLE_OF_LEMONADE]
+en {A bottle of lemonade};
+ru {Бутылочка лимонада};
+[BOTTLE_OF_LEMONADE_VALUE]
+en {Volume: %d ml};
+ru {Объём: %d мл};
+[BOTTLE_OF_LEMONADE_ABOUT]
+en {};
+ru {Освежает!};
+
+[BOTTLE_OF_JUICE]
+en {A bottle of juice};
+ru {Бутылочка сока};
+[BOTTLE_OF_JUICE_VALUE]
+en {Volume: %d ml};
+ru {Объём: %d мл};
+[BOTTLE_OF_JUICE_ABOUT]
+en {};
+ru {Вкусно!};
+
+
+[EMPTY_BOTTLE]
+en {Empty bottle};
+ru {Пустая бутылка};
+[EMPTY_BOTTLE_VALUE]
+en {%d ml};
+ru {%d мл};
+[EMPTY_BOTTLE_ABOUT]
+en {empty...};
+ru {пусто...};
+
+
+[BOTTLE_OF_WATER]
+en {A bottle of water};
+ru {Бутылочка воды};
+[BOTTLE_OF_WATER_VALUE]
+en {Water volume: %d ml};
+ru {Объём воды: %d мл};
+[BOTTLE_OF_WATER_ABOUT]
+en {};
+ru {};
+
+
+[CAR_WHEEL]
+en {Car wheel};
+ru {Колесо};
+[CAR_WHEEL_VALUE]
+en {Condition: %d%%};
+ru {Состояние: %d%%};
+[CAR_WHEEL_ABOUT]
+en {};
+ru {};
+
+
+[CAR_ENGINE]
+en {Car engine};
+ru {Автомобильный двигатель};
+[CAR_ENGINE_VALUE]
+en {Condition: %d%%};
+ru {Состояние: %d%%};
+[CAR_ENGINE_ABOUT]
+en {};
+ru {};
+
+
+[EMPTY_JERRYCAN]
+en {Empty jerrycan};
+ru {Пустая канистра};
+[EMPTY_JERRYCAN_VALUE]
+en {%d L};
+ru {%d л};
+[EMPTY_JERRYCAN_ABOUT]
+en {};
+ru {};
+
+
+[FULL_JERRYCAN]
+en {Full jerrycan of gas};
+ru {Канистра бензина};
+[FULL_JERRYCAN_VALUE]
+en {Petrol volume: %d L};
+ru {Объём бензина: %d л};
+[FULL_JERRYCAN_ABOUT]
+en {};
+ru {};
+
+
+[THE_BANDAGE]
+en {The bandage};
+ru {Бинт};
+[THE_BANDAGE_VALUE]
+en {Efficiency: %d};
+ru {Эффективность: %d};
+[THE_BANDAGE_ABOUT]
+en {Antiwound.};
+ru {Лечит раны.};
+
+
+[PIECE_OF_PIZZA]
+en {A piece of pizza};
+ru {Кусочек пиццы};
+[PIECE_OF_PIZZA_VALUE]
+en {Mass: %d g};
+ru {Масса: %d г};
+[PIECE_OF_PIZZA_ABOUT]
+en {Tasty!};
+ru {Утоляет голод и восстанавливает здоровье.};
+
+[FULL_PIZZA]
+en {Full pizza};
+ru {Целая пицца};
+[FULL_PIZZA_VALUE]
+en {Mass: %d g};
+ru {Масса: %d г};
+[FULL_PIZZA_ABOUT]
+en {Hearty!};
+ru {Заметно утоляет голод и восстанавливает здоровье.};
+
+[BIG_FOOD]
+en {Lunch};
+ru {Обед};
+[BIG_FOOD_VALUE]
+en {Mass: %d g};
+ru {Масса: %d г};
+[BIG_FOOD_ABOUT]
+en {Hearty!};
+ru {Отлично утоляет голод и восстанавливает здоровье.};
+
+[HUMBURGER_FOOD]
+en {Humburger};
+ru {Бутерброд};
+[HUMBURGER_FOOD_VALUE]
+en {Mass: %d g};
+ru {Масса: %d г};
+[HUMBURGER_FOOD_ABOUT]
+en {Hearty!};
+ru {Неплохо утоляет голод и восстанавливает здоровье.};
+
+[GPS_NAVIGATOR]
+en {GPS-navigator};
+ru {GPS-навигатор};
+[GPS_NAVIGATOR_VALUE]
+en {%dk};
+ru {%dk};
+[GPS_NAVIGATOR_ABOUT]
+en {Show your coordinates.};
+ru {Показывает ваши кординаты.};
+
+
+[COMPASS_BOX]
+en {Compass};
+ru {Компас};
+[COMPASS_BOX_VALUE]
+en {%dk};
+ru {%dk};
+[COMPASS_BOX_ABOUT]
+en {};
+ru {};
+
+[MINI_MAGNET]
+en {Magnet};
+ru {Магнит};
+[MINI_MAGNET_VALUE]
+en {%dN};
+ru {%dН};
+[MINI_MAGNET_ABOUT]
+en {};
+ru {};
+
+[BASKET_BALL]
+en {Ball};
+ru {Мяч};
+[BASKET_BALL_VALUE]
+en {%d};
+ru {%d};
+[BASKET_BALL_ABOUT]
+en {};
+ru {};
+
+
+[BIG_BAG_PACK]
+en {Big bag pack};
+ru {Большой рюкзак};
+[BIG_BAG_PACK_VALUE]
+en {%d l};
+ru {На %d литров};
+[BIG_BAG_PACK_ABOUT]
+en {};
+ru {};
+
+[TINY_BAG_PACK]
+en {Tiny bag pack};
+ru {Маленький рюкзак};
+[TINY_BAG_PACK_VALUE]
+en {%d l};
+ru {На %d литров};
+[TINY_BAG_PACK_ABOUT]
+en {};
+ru {};
+
+[FLOPPY_DISK]
+en {Floppy disk};
+ru {Дискета};
+[FLOPPY_DISK_VALUE]
+en {%d Mb};
+ru {На %d МБ};
+[FLOPPY_DISK_ABOUT]
+en {};
+ru {};
+
+
+
+#1-название, 2-перенос строки, 3-значение, 4-перенос строки, 5-описание
+[OBJECT_NAME_FOR_ABOUT]
+en {Name: %s%s%s%s%s};
+ru {Название: %s%s%s%s%s};
+
+[DEFAULT_OBJECT_MEANING_STRING]
+en {Value: %d};
+ru {Значение: %d};
+
+[TITLE_FOR_ABOUT_OBJECT]
+en {About thing};
+ru {Описание вещи};
+
+
+
+
+[ON_START_ENGINE]
+en {The engine has started!};
+ru {Двигатель завёлся!};
+
+[ON_STOP_ENGINE]
+en {The engine is stopped.};
+ru {Двигатель заглушен.};
+
+[ON_START_BROKEN_ENGINE]
+en {The engine is broken.};
+ru {Двигатель сломан.};
+
+[ON_START_NO_FUEL_ENGINE]
+en {No fuel.};
+ru {Бак пуст.};
+
+[YOU_POURED_OUT_A_GAS]
+en {You poured out a gasoline from your gas-tank into the jerrycan!};
+ru {Вы отлили часть бензина из бака в канистру!};
+
+[YOU_POURED_OFF_A_GAS]
+en {You poured off all gasoline from your gas-tank into the jerrycan!};
+ru {Вы слили весь бензин из бака в канистру!};
+
+[ALL_VEHICLE_TIRES_ARE_GOOD]
+en {All tires are good!};
+ru {Все колёса целы!};
+
+[VEHICLE_ENGINE_IS_GOOD]
+en {The engine is nice!};
+ru {Двигатель впорядке!};
+
+[VEHICLE_STATE_IS_GOOD]
+en {Your vehicle is fine!};
+ru {Корпус автомобиля не нуждается в ремонте!};
+
+[CANT_DO_WITH_VEHICLE]
+en {You can't do it with such kind of vehicle!};
+ru {Это невозможно сделать с таким типом транспорта!};
+
+[THE_GAS_TANK_IS_FULL]
+en {The gas-tank is full!};
+ru {Бак залит доверху!};
+
+[YOU_HAVE_NO_WOUND]
+en {You have no wound!};
+ru {Вы не ранены!};
+
+[YOU_ARE_NOT_HUNGRY]
+en {You are not hungry!};
+ru {Да вы, сударь, обожрались!};
+
+[YOU_ARE_NOT_THIRSTY]
+en {You are not thirsty!};
+ru {Вы не хотите пить!};
+
+[O_O_O_H_H_H]
+en {Oooohhh!};
+ru {Ооооххх!};
+
+[A_A_A_H_H_H]
+en {Aaaahhh!};
+ru {Ааааххх!};
+
+
+[TOO_SHORT_PASSWORD]
+en {The password is too short. Retry in 10 seconds, please...};
+ru {Слишком короткий пароль. Подождите 10 сек...};
+
+[WRONG_PASSWORD]
+en {Wrong password! Retry in 10 seconds, please...};
+ru {Неверный пароль! Подождите 10 сек...};
+
+[PASSWORD_INPUT_TITLE]
+en {Login/Registration};
+ru {Вход/Регистрация};
+
+[PASSWORD_WORD]
+en {Password (6 chars or longer):};
+ru {Пароль (6 или более символов):};
+
+[YOU_ARE_WELCOME]
+en {You are welcome!};
+ru {Добро пожаловать!};
+
+[HELLO_MESSAGE]
+en {Choose your language, please};
+ru {Выберите ваш язык};
+
+[HELPLANG]
+en {{00FF00}/lang {FFCC00}- language choosing};
+ru {{00FF00}/lang {FFCC00}- выбор языка};
+
+[NEWLANG]
+en {Your language is: };
+ru {Теперь ваш язык: };
+
+[COMMAND_USAGE]
+en {Usage: };
+ru {Использование команды: };
+
+[HELP_HELP]
+en {{00FF00}/help {FFCC00}- the list of available commands};
+ru {{00FF00}/help {FFCC00}- список доступных команд};
+
+[HELP_LANG]
+en {{00FF00}/lang {FFCC00}- language choosing};
+ru {{00FF00}/lang {FFCC00}- выбор языка};
+
+[HELP_LAND]
+en {{00FF00}/land {FFCC00}- show you a language of all online players};
+ru {{00FF00}/land {FFCC00}- язык, выбранный всеми игроками на сервере};
+
+[HELP_ALL_COMMANDS_ABOUT]
+en {{CCFFCC}Control:};
+ru {{CCFFCC}Управление:};
+
+[HELP_ALL_COMMANDS_Y]
+en {{00FF00}Y {FFCC00}- inventory};
+ru {{00FF00}Y {FFCC00}- инвентарь};
+
+[HELP_ALL_COMMANDS_2]
+en {{00FF00}2 {FFCC00}- start/stop engine};
+ru {{00FF00}2 {FFCC00}- запустить/заглушить двигатель};
+
+[HELP_INVENTORY_BUTTONS_ABOUT]
+en {{CCFFCC}Inventory buttons:};
+ru {{CCFFCC}Кнопки инвентаря:};
+
+[HELP_INVENTORY_BUTTONS_X]
+en {{00FF00}X {FFCC00}- close inventory};
+ru {{00FF00}X {FFCC00}- закрыть инвентарь};
+
+[HELP_INVENTORY_BUTTONS_Q]
+en {{00FF00}? {FFCC00}- info about selected cell};
+ru {{00FF00}? {FFCC00}- описание выбранной вещи};
+
+[HELP_INVENTORY_BUTTONS_V]
+en {{00FF00}V {FFCC00}- apply/assemble/load};
+ru {{00FF00}V {FFCC00}- применить/собрать/зарядить};
+
+[HELP_INVENTORY_BUTTONS_M]
+en {{00FF00}M {FFCC00}- disassemble/discharge weapon/pour off};
+ru {{00FF00}M {FFCC00}- разобрать/вылить/разрядить};
+
+[HELP_TEST_ABOUT]
+en {{CCFFCC}Commands for testers:};
+ru {{CCFFCC}Команды для тестировщиков:};
+
+[HELP_TEST_CMDS_TP]
+en {{00FF00}/tp {FFCC00}- teleport to the special test place};
+ru {{00FF00}/tp {FFCC00}- телепортироваться на тестовую площадку};
+
+[HELP_TEST_CMDS_LIVE]
+en {{00FF00}/live {FFCC00}- restore your health};
+ru {{00FF00}/live {FFCC00}- восстановить здоровье};
+
+[LAND_COMMAND_RESULT_TITLE]
+en {{FFCC00}Players:};
+ru {{FFCC00}Игроки:};
+
+[LAND_COMMAND_RESULT]
+en {{FFCC00}Player };
+ru {{FFCC00}Игрок };
+
+[LANGUAGE_TITLE]
+en {Choose your language:};
+ru {Выберите ваш язык:};
+
+[LANGUAGE_NAME]
+en {English};
+ru {Русский};
+
+[LANGUAGE_STRING]
+en {{FFCC00} language {00FF00}};
+ru {{FFCC00} язык {00FF00}};
+
+[DONT_CHANGE]
+en {Don't change};
+ru {Оставить Русский};
+
+[OK_MESSAGE]
+en {OK};
+ru {OK};
+
+[CANCEL_MESSAGE]
+en {Cancel};
+ru {Отмена};
+
+[ERROR_MESSAGE]
+en {{FF0000}Error};
+ru {{FF0000}Ошибка};
+
+
