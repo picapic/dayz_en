@@ -89,8 +89,11 @@ forward set_character_killer(playerid);
 forward upscore_character(db_playerid);
 
 forward save_player_position(playerid);
+forward save_player_bakup_position(playerid);
 forward load_player_position(playerid);
 forward save_state_and_position(playerid); //посылает один единственный запрос в БД
+
+forward mark_player_as_cheater(playerid);
 
 forward load_player_inventory(playerid, inv[6]);
 forward load_vehicle_inventory(vehicleid, inv[MAX_INVENTORY_ON_VEHICLE], obj[MAX_INVENTORY_ON_VEHICLE]);
@@ -3143,6 +3146,14 @@ public save_player_position(playerid)
 	mysql_query(gMysql, request);
 }
 
+public save_player_bakup_position(playerid)
+{
+	new request[256];
+
+    mysql_format(gMysql, request, sizeof(request), "update characters set bplacex=placex,bplacey=placey,bplacez=placez,bangle=angle,cheater=0 where player_id=%d LIMIT 1", gPlayersID[playerid]);
+	mysql_query(gMysql, request);
+}
+
 public load_player_position(playerid)
 {
 	new rows, fields;
@@ -3155,10 +3166,22 @@ public load_player_position(playerid)
     mysql_format(gMysql, request, sizeof(request), "SELECT placex,placey,placez,angle FROM characters WHERE player_id=%d LIMIT 1", gPlayersID[playerid]);
 	result = mysql_query(gMysql, request);
 	cache_get_data(rows, fields, gMysql);
-	x = cache_get_field_content_float(0, "placex", gMysql);
-	y = cache_get_field_content_float(0, "placey", gMysql);
-	z = cache_get_field_content_float(0, "placez", gMysql);
-	ang = cache_get_field_content_float(0, "angle", gMysql);
+	cheater = cache_get_field_content_int(0, "cheater", gMysql);
+	if(cheater == 0)
+	{
+		x = cache_get_field_content_float(0, "placex", gMysql);
+		y = cache_get_field_content_float(0, "placey", gMysql);
+		z = cache_get_field_content_float(0, "placez", gMysql);
+		ang = cache_get_field_content_float(0, "angle", gMysql);
+	}
+	else
+	{
+		x = cache_get_field_content_float(0, "bplacex", gMysql);
+		y = cache_get_field_content_float(0, "bplacey", gMysql);
+		z = cache_get_field_content_float(0, "bplacez", gMysql);
+		ang = cache_get_field_content_float(0, "bangle", gMysql);
+	}
+
 	if(cache_is_valid(result, gMysql))
 		cache_delete(result);
 
@@ -3174,6 +3197,9 @@ public load_player_position(playerid)
 	gNonCheaters[playerid][0] = x;
 	gNonCheaters[playerid][1] = y;
 	gNonCheaters[playerid][2] = z;
+
+	//для обнуления флага cheater
+	save_player_bakup_position(playerid);
 }
 
 public save_state_and_position(playerid)
@@ -3185,6 +3211,14 @@ public save_state_and_position(playerid)
 	GetPlayerFacingAngle(playerid, ang);
 
     mysql_format(gMysql, request, sizeof(request), "UPDATE characters SET placex=%f,placey=%f,placez=%f,angle=%f,health=%d,hunger=%d,thirst=%d,wound=%d,killer_id=%d WHERE player_id=%d LIMIT 1", x, y, z, ang, gHealth[playerid], gHunger[playerid], gThirst[playerid], gWound[playerid], gKiller[playerid], gPlayersID[playerid]);
+	mysql_query(gMysql, request);
+}
+
+public mark_player_as_cheater(playerid)
+{
+	new request[256];
+
+    mysql_format(gMysql, request, sizeof(request), "update characters set cheater=1 where player_id=%d LIMIT 1", gPlayersID[playerid]);
 	mysql_query(gMysql, request);
 }
 

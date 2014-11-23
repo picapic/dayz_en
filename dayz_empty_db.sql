@@ -36,6 +36,11 @@ CREATE TABLE `characters` (
   `killer_id` int(11) DEFAULT NULL,
   `c_killer` int(11) DEFAULT NULL,
   `scores` int(11) NOT NULL DEFAULT '0',
+  `bplacex` float NOT NULL DEFAULT '-1420.64',
+  `bplacey` float NOT NULL DEFAULT '-2897.94',
+  `bplacez` float NOT NULL DEFAULT '48.0911',
+  `bangle` float NOT NULL DEFAULT '38.8824',
+  `cheater` int not null default 0,
   KEY `player_id` (`player_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 /*!40101 SET character_set_client = @saved_cs_client */;
