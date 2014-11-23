@@ -183,7 +183,7 @@ public cheater_finder()
 		GetPlayerPos(playerid, x, y, z);
 		if(VectorSize(gNonCheaters[playerid][0]-x,gNonCheaters[playerid][1]-y,gNonCheaters[playerid][2]-z) > max_path)
 		{
-		        mark_player_as_cheater(playerid);
+			mark_player_as_cheater(playerid);
 			GetPlayerName(playerid, name, sizeof(name));
 		    format(msg, sizeof(msg), "%s(id:%d) seems to be a CHEATER!", name, playerid);
 		    SendClientMessageToAll(0xFF0000FF, msg);

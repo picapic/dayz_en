@@ -3159,6 +3159,7 @@ public load_player_position(playerid)
 	new rows, fields;
 	new request[128];
 	new Float:x, Float:y, Float:z, Float:ang;
+	new cheater;
 	new Cache:result;
 
 	set_player_id(playerid);
