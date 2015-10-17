@@ -28,7 +28,7 @@ If you've filled database with full data (#1 or #2), you can start to play!
 
 Database filling:
 
--use next commands for database filling (from  the game):
+-use next commands for database filling (from the game):
 /addspawn - add player spawn place in the place you are standing
 /addcar - add car spawn place in the place you are standing
 /adddot [type1, type2, type3 ...] - add object spawn place (see type id in 'thing_type' table in database) in the place you are standing
@@ -36,28 +36,31 @@ Database filling:
 /addobj <item id> [number] - add object in game (see id in 'things' table in database)
 /setnew - set new objects you added with /adddot command on spawn places
 
-The state and position of every (!) item in mode is tracked. So, the object count is static (if you don't add any one).
+The state and position of every (!) item in this mode is tracked. So, the object count is static (if you don't add any more).
 
 
 
 Editor:
 
-You can add new types of objects in game. Files things.txt and imes.txt contains all information about things.
+You can add a new types of objects into the game. Files things.txt and imes.txt contains all information about items.
 The rules for editing this files are inside them.
 File things.txt contains parameters. File imes.txt contains name and description on several languages.
-You MUST add description for every thing in imes.txt file! Every thing has three records:
+You MUST add description for every thing in imes.txt file! Every item has three records:
 
 [XXXXXXXXXXX]
 ru {...}
 en {...}
 es {...}
+pl {...}
 [XXXXXXXXXXX_VALUE]
 ru {...%d...}
 en {...%d...}
 es {...%d...}
+pl {...%d...}
 [XXXXXXXXXXX_ABOUT]
 es {...}
 en {...}
+pl {...}
 ru {...}
 
 
