@@ -11,16 +11,18 @@ Install:
 You can change this values. In pawno folder:
 -create MySQL DB with name you set in defines.inc (DBNAME parameter)
 -add user to this DB with name (USER parameter) and password (PASSWD parameter) you set in defines.inc
+-compile DayZ+.pwn
+-copy DayZ+.amx to gamemodes folder
 -compile menu.pwn
--copy menu.amx in filterscripts folder
+-copy menu.amx to filterscripts folder
 in server folder:
 -fill in the database with one of this files:
   1) dayz_data_mysql40_11_11_2014.sql 	(full MySQL database v4)
   2) dayz_data_mysql56_11_11_2014.sql 	(full MySQL database v5)
   3) dayz_empty_db.sql 			(empty MySQL database v5)
   4) dayz_empty_db_40.sql 		(empty MySQL database v4)
-Every player in this databases have password: "password"
-If you filled database with full data (#1 or #2), start to play!
+Every player from this databases have password: "password"
+If you've filled database with full data (#1 or #2), you can start to play!
 
 
 
