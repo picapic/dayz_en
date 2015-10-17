@@ -12,9 +12,9 @@ You can change this values. In pawno folder:
 -create MySQL DB with name you set in defines.inc (DBNAME parameter)
 -add user to this DB with name (USER parameter) and password (PASSWD parameter) you set in defines.inc
 -compile DayZ+.pwn
--copy DayZ+.amx to gamemodes folder
+-copy DayZ+.amx into a gamemodes folder
 -compile menu.pwn
--copy menu.amx to filterscripts folder
+-copy menu.amx into a filterscripts folder
 in server folder:
 -fill in the database with one of this files:
   1) dayz_data_mysql40_11_11_2014.sql 	(full MySQL database v4)
