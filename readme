@@ -16,7 +16,7 @@ You can change this values. In pawno folder:
 -compile menu.pwn
 -copy menu.amx into a filterscripts folder
 in server folder:
--fill in the database with one of this files:
+-fill in a database by one of this files:
   1) dayz_data_mysql40_11_11_2014.sql 	(full MySQL database v4)
   2) dayz_data_mysql56_11_11_2014.sql 	(full MySQL database v5)
   3) dayz_empty_db.sql 			(empty MySQL database v5)
