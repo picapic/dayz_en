@@ -6,12 +6,12 @@
 
 //database connection data
 #define HOST "127.0.0.1" //host name/addr
-#define USER "uzer" 	 //user name
-#define PASSWD "pazzwd"  //user password
+#define USER "user" 	 //user name
+#define PASSWD "passwd"  //user password
 #define DBNAME "dayz"	 //database name
 
-#define TD_COUNT 17		//количество дополнительных текстдравов меню
-#define TD_COUNT_VEHICLE 2	//количество текстдравов показателей транспорта
+#define TD_COUNT 17		//ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г¤Г®ГЇГ®Г«Г­ГЁГІГҐГ«ГјГ­Г»Гµ ГІГҐГЄГ±ГІГ¤Г°Г ГўГ®Гў Г¬ГҐГ­Гѕ
+#define TD_COUNT_VEHICLE 2	//ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГІГҐГЄГ±ГІГ¤Г°Г ГўГ®Гў ГЇГ®ГЄГ Г§Г ГІГҐГ«ГҐГ© ГІГ°Г Г­Г±ГЇГ®Г°ГІГ 
 
 #define TD_STATISTIC_DATA 3
 
@@ -25,9 +25,9 @@
 #define SENSORS_TIMER_SAVE 30000
 #define SENSORS_TIMER_VEHICLES 15000
 #define VEHICLE_DATA_SHOW_CHECK 5000
-#define UPDATE_WEAPON_AMMO_TIMER 5000 //время обновления количества патронов после первого выстрела
+#define UPDATE_WEAPON_AMMO_TIMER 5000 //ГўГ°ГҐГ¬Гї Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГї ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ  ГЇГ ГІГ°Г®Г­Г®Гў ГЇГ®Г±Г«ГҐ ГЇГҐГ°ГўГ®ГЈГ® ГўГ»Г±ГІГ°ГҐГ«Г 
 
-#define NON_CHEATERS_INTERVAL 5000 //таймер проверки на читерство
+#define NON_CHEATERS_INTERVAL 5000 //ГІГ Г©Г¬ГҐГ° ГЇГ°Г®ГўГҐГ°ГЄГЁ Г­Г  Г·ГЁГІГҐГ°Г±ГІГўГ®
 
 #define START_HEALTH_VALUE 12000
 #define MAX_HEALTH_VALUE 14000
@@ -36,8 +36,8 @@
 #define START_THIRST_VALUE 1000
 #define MAX_THIRST_VALUE 1200
 #define START_WOUND_VALUE 0
-#define MAX_WOUND_VALUE 1000 	   //max значение ранения для цвета сенсора
-#define MAX_WOUND_REAL_VALUE 14000 //max значение самого ранения
+#define MAX_WOUND_VALUE 1000 	   //max Г§Г­Г Г·ГҐГ­ГЁГҐ Г°Г Г­ГҐГ­ГЁГї Г¤Г«Гї Г¶ГўГҐГІГ  Г±ГҐГ­Г±Г®Г°Г 
+#define MAX_WOUND_REAL_VALUE 14000 //max Г§Г­Г Г·ГҐГ­ГЁГҐ Г±Г Г¬Г®ГЈГ® Г°Г Г­ГҐГ­ГЁГї
 
 #define CELL_SIZE 65.0
 
@@ -67,9 +67,9 @@
 #define BULLET_HIT_TYPE_PLAYER_OBJECT   4
 
 #define OBJECT_DISTANCE 400.0
-#define STANDART_RANGE_VALUE 2.5 //максимальная дистанция до подбираемых объектов
+#define STANDART_RANGE_VALUE 2.5 //Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г Гї Г¤ГЁГ±ГІГ Г­Г¶ГЁГї Г¤Г® ГЇГ®Г¤ГЎГЁГ°Г ГҐГ¬Г»Гµ Г®ГЎГєГҐГЄГІГ®Гў
 
-#define DROP_DISTANCE_FROM_PLAYER 1.5 //дистанция до выкладываемого объекта
+#define DROP_DISTANCE_FROM_PLAYER 1.5 //Г¤ГЁГ±ГІГ Г­Г¶ГЁГї Г¤Г® ГўГ»ГЄГ«Г Г¤Г»ГўГ ГҐГ¬Г®ГЈГ® Г®ГЎГєГҐГЄГІГ 
 
 #define CreateObject(%1,%2,%3,%4,%5,%6,%7,%8) CreateDynamicObject(%1, %2, %3, %4, %5, %6, %7, -1, -1, -1, %8, 0.0)
 #define IsValidObject IsValidDynamicObject
