@@ -6,7 +6,7 @@ Install:
 -host: 			127.0.0.1
 -database name: 	dayz
 -user name:	 	user
--password: 		password
+-password: 		passwd
 
 You can change this values. In pawno folder:
 -create MySQL DB with name you set in defines.inc (DBNAME parameter)
